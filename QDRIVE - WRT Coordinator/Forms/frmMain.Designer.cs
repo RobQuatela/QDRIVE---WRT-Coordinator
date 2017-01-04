@@ -1075,6 +1075,7 @@
             this.dgvEmployees.Size = new System.Drawing.Size(319, 246);
             this.dgvEmployees.TabIndex = 0;
             this.dgvEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellClick);
+            this.dgvEmployees.Columns[2].DefaultCellStyle.Format = "#.000\\%";
             // 
             // tbInsurance
             // 
@@ -4188,7 +4189,6 @@
             // empperDataGridViewTextBoxColumn
             // 
             this.empperDataGridViewTextBoxColumn.DataPropertyName = "emp_per";
-            dataGridViewCellStyle3.Format = "%";
             dataGridViewCellStyle3.NullValue = null;
             this.empperDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.empperDataGridViewTextBoxColumn.HeaderText = "Percent";

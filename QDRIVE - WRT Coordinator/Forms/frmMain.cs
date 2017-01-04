@@ -725,7 +725,29 @@ namespace QDRIVE___WRT_Coordinator
 
         private void btnJobSiteEdit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(lblJobID.Text);
+            frmEditJobSite edit = new frmEditJobSite();
+            edit.lblJobSiteCustomer.Text = lblJobSiteCustomer.Text;
+
+            lblJobID.Visible = true;
+            edit.jobID = Convert.ToInt32(lblJobID.Text);
+            lblJobID.Visible = false;
+
+            edit.coID = Convert.ToInt32(lstCompanies.SelectedValue);
+
+            edit.cbJobSiteStatus.Text = cbJobSiteStatus.Text;
+
+            if(String.IsNullOrEmpty(lblJobSiteDateComplete.Text))
+            {
+                edit.dtpJobEnd.Visible = false;
+                edit.ckJobSiteEnd.Visible = true;
+            }
+            else
+            {
+                edit.ckJobSiteEnd.Visible = false;
+                edit.dtpJobEnd.Text = lblJobSiteDateComplete.Text;
+            }
+            edit.dtpJobStart.Text = lblJobSiteDateStart.Text;
+            edit.Show();
         }
 
         private void btnAddCust_Click(object sender, EventArgs e)

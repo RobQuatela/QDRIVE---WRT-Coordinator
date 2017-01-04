@@ -83,59 +83,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Database.cs" />
     <Compile Include="dbwrtcoordinatorDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbwrtcoordinatorDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="frmAssignEquip.cs">
+    <Compile Include="Forms\frmAssignEquip.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAssignEquip.Designer.cs">
+    <Compile Include="Forms\frmAssignEquip.Designer.cs">
       <DependentUpon>frmAssignEquip.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCloseSite.cs">
+    <Compile Include="Forms\frmCloseSite.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCloseSite.Designer.cs">
+    <Compile Include="Forms\frmCloseSite.Designer.cs">
       <DependentUpon>frmCloseSite.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEditJobSite.cs">
+    <Compile Include="Forms\frmEditJobSite.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEditJobSite.Designer.cs">
+    <Compile Include="Forms\frmEditJobSite.Designer.cs">
       <DependentUpon>frmEditJobSite.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmJobSiteWizard.cs">
+    <Compile Include="Forms\frmJobSiteWizard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmJobSiteWizard.Designer.cs">
+    <Compile Include="Forms\frmJobSiteWizard.Designer.cs">
       <DependentUpon>frmJobSiteWizard.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmEditJobSite.resx">
+    <EmbeddedResource Include="Forms\frmEditJobSite.resx">
       <DependentUpon>frmEditJobSite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptCommDetail.rdlc" />
     <EmbeddedResource Include="Reports\rptCommSummary.rdlc" />
     <EmbeddedResource Include="Reports\rptEquipPickup.rdlc" />
-    <EmbeddedResource Include="frmAssignEquip.resx">
+    <EmbeddedResource Include="Forms\frmAssignEquip.resx">
       <DependentUpon>frmAssignEquip.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCloseSite.resx">
+    <EmbeddedResource Include="Forms\frmCloseSite.resx">
       <DependentUpon>frmCloseSite.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmJobSiteWizard.resx">
+    <EmbeddedResource Include="Forms\frmJobSiteWizard.resx">
       <DependentUpon>frmJobSiteWizard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -198,6 +199,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
