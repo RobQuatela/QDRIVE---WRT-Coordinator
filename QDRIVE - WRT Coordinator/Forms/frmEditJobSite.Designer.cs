@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.lblPayStatus = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ckJobSiteEnd = new System.Windows.Forms.CheckBox();
+            this.dtpJobEnd = new System.Windows.Forms.DateTimePicker();
             this.cbJobSiteStatus = new System.Windows.Forms.ComboBox();
             this.btnRemove = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -41,18 +45,15 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblJobSiteCustomer = new System.Windows.Forms.Label();
             this.lstJobSiteEmployee = new System.Windows.Forms.ListBox();
+            this.dtempnamejobBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.tbemployeeTableAdapter = new QDRIVE___WRT_Coordinator.dbwrtcoordinatorDataSetTableAdapters.tbemployeeTableAdapter();
-            this.dtpJobEnd = new System.Windows.Forms.DateTimePicker();
-            this.ckJobSiteEnd = new System.Windows.Forms.CheckBox();
-            this.dtempnamejobBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtempnamejobTableAdapter = new QDRIVE___WRT_Coordinator.dbwrtcoordinatorDataSetTableAdapters.dtempnamejobTableAdapter();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblPayStatus = new System.Windows.Forms.Label();
+            this.tbempjobTableAdapter = new QDRIVE___WRT_Coordinator.dbwrtcoordinatorDataSetTableAdapters.tbempjobTableAdapter();
             this.groupBox20.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbemployeeBindingSource)).BeginInit();
@@ -87,6 +88,49 @@
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Job Site Details";
             // 
+            // lblPayStatus
+            // 
+            this.lblPayStatus.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayStatus.Location = new System.Drawing.Point(423, 257);
+            this.lblPayStatus.Name = "lblPayStatus";
+            this.lblPayStatus.Size = new System.Drawing.Size(121, 22);
+            this.lblPayStatus.TabIndex = 44;
+            this.lblPayStatus.Text = "label51";
+            this.lblPayStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(340, 260);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Pay Status:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ckJobSiteEnd
+            // 
+            this.ckJobSiteEnd.AutoSize = true;
+            this.ckJobSiteEnd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckJobSiteEnd.Location = new System.Drawing.Point(423, 115);
+            this.ckJobSiteEnd.Name = "ckJobSiteEnd";
+            this.ckJobSiteEnd.Size = new System.Drawing.Size(182, 20);
+            this.ckJobSiteEnd.TabIndex = 42;
+            this.ckJobSiteEnd.Text = "I know the completion date";
+            this.ckJobSiteEnd.UseVisualStyleBackColor = true;
+            this.ckJobSiteEnd.CheckedChanged += new System.EventHandler(this.ckJobSiteEnd_CheckedChanged);
+            // 
+            // dtpJobEnd
+            // 
+            this.dtpJobEnd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dtpJobEnd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpJobEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpJobEnd.Location = new System.Drawing.Point(423, 111);
+            this.dtpJobEnd.Name = "dtpJobEnd";
+            this.dtpJobEnd.Size = new System.Drawing.Size(103, 22);
+            this.dtpJobEnd.TabIndex = 41;
+            // 
             // cbJobSiteStatus
             // 
             this.cbJobSiteStatus.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,6 +158,7 @@
             this.btnRemove.TabIndex = 39;
             this.btnRemove.Text = "<< Remove Selected";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // groupBox3
             // 
@@ -163,6 +208,7 @@
             this.btnJobSiteEdit.TabIndex = 14;
             this.btnJobSiteEdit.Text = "Save && Close";
             this.btnJobSiteEdit.UseVisualStyleBackColor = false;
+            this.btnJobSiteEdit.Click += new System.EventHandler(this.btnJobSiteEdit_Click);
             // 
             // dtpJobStart
             // 
@@ -185,6 +231,7 @@
             this.btnAdd.TabIndex = 38;
             this.btnAdd.Text = "Add Selected >>";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblJobSiteCustomer
             // 
@@ -209,6 +256,11 @@
             this.lstJobSiteEmployee.TabIndex = 5;
             this.lstJobSiteEmployee.ValueMember = "empjob_id";
             this.lstJobSiteEmployee.SelectedValueChanged += new System.EventHandler(this.lstJobSiteEmployee_SelectedValueChanged);
+            // 
+            // dtempnamejobBindingSource
+            // 
+            this.dtempnamejobBindingSource.DataMember = "dtempnamejob";
+            this.dtempnamejobBindingSource.DataSource = this.dbwrtcoordinatorDataSet;
             // 
             // label50
             // 
@@ -269,56 +321,13 @@
             // 
             this.tbemployeeTableAdapter.ClearBeforeFill = true;
             // 
-            // dtpJobEnd
-            // 
-            this.dtpJobEnd.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dtpJobEnd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpJobEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpJobEnd.Location = new System.Drawing.Point(423, 111);
-            this.dtpJobEnd.Name = "dtpJobEnd";
-            this.dtpJobEnd.Size = new System.Drawing.Size(103, 22);
-            this.dtpJobEnd.TabIndex = 41;
-            // 
-            // ckJobSiteEnd
-            // 
-            this.ckJobSiteEnd.AutoSize = true;
-            this.ckJobSiteEnd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckJobSiteEnd.Location = new System.Drawing.Point(423, 115);
-            this.ckJobSiteEnd.Name = "ckJobSiteEnd";
-            this.ckJobSiteEnd.Size = new System.Drawing.Size(182, 20);
-            this.ckJobSiteEnd.TabIndex = 42;
-            this.ckJobSiteEnd.Text = "I know the completion date";
-            this.ckJobSiteEnd.UseVisualStyleBackColor = true;
-            // 
-            // dtempnamejobBindingSource
-            // 
-            this.dtempnamejobBindingSource.DataMember = "dtempnamejob";
-            this.dtempnamejobBindingSource.DataSource = this.dbwrtcoordinatorDataSet;
-            // 
             // dtempnamejobTableAdapter
             // 
             this.dtempnamejobTableAdapter.ClearBeforeFill = true;
             // 
-            // label1
+            // tbempjobTableAdapter
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(340, 260);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 16);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "Pay Status:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblPayStatus
-            // 
-            this.lblPayStatus.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayStatus.Location = new System.Drawing.Point(423, 257);
-            this.lblPayStatus.Name = "lblPayStatus";
-            this.lblPayStatus.Size = new System.Drawing.Size(121, 22);
-            this.lblPayStatus.TabIndex = 44;
-            this.lblPayStatus.Text = "label51";
-            this.lblPayStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tbempjobTableAdapter.ClearBeforeFill = true;
             // 
             // frmEditJobSite
             // 
@@ -365,5 +374,6 @@
         private dbwrtcoordinatorDataSetTableAdapters.dtempnamejobTableAdapter dtempnamejobTableAdapter;
         public System.Windows.Forms.Label lblPayStatus;
         private System.Windows.Forms.Label label1;
+        private dbwrtcoordinatorDataSetTableAdapters.tbempjobTableAdapter tbempjobTableAdapter;
     }
 }

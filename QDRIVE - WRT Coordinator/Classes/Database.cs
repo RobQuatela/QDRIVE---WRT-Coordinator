@@ -26,5 +26,62 @@ namespace QDRIVE___WRT_Coordinator
 
                 return answer;
         }
+
+        public static void DeleteStatement(String table, String deleteItem, int value)
+        {
+            String delete = String.Format("DELETE FROM {0} WHERE {1} = @value", table, deleteItem);
+
+            using (OleDbConnection conn = new OleDbConnection(connString))
+            {
+                OleDbCommand cmdDelete = new OleDbCommand(delete, conn);
+                cmdDelete.Parameters.AddWithValue("@value", OleDbType.Integer).Value = value;
+                conn.Open();
+                cmdDelete.ExecuteNonQuery();
+            }
+        }
+
+        public static void InsertStatement(object[] dbItems, object[] values, String table, String whereClause, int whereItem)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT ");
+            int counter = 1;
+
+            sb.Append("INTO");
+            sb.Append(table);
+            foreach (int i in dbItems)
+            {
+                sb.Append(i);
+                counter++;
+                if (counter < dbItems.Length)
+                    sb.Append(", ");
+                else
+                    sb.Append(") ");
+            }
+            sb.Append("VALUES (");
+
+            counter = 1;
+            foreach (int j in values)
+            {
+                sb.Append(j);
+                counter++;
+                if (counter < values.Length)
+                    sb.Append(", ");
+                else
+                    sb.Append(") ");
+            }
+            sb.Append(")");
+
+          /*  using (OleDbConnection conn = new OleDbConnection(connString))
+            {
+                OleDbCommand cmdInsert = new OleDbCommand(sb.ToString(), conn);
+                foreach(int i in values)
+                {
+                    cmdInsert.Parameters.AddWithValue(i, )
+                }
+            }*/
+
+        }
     }
+
+
 }

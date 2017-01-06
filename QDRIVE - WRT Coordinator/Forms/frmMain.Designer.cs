@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,14 +40,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -61,7 +54,14 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtEquipPickupCustJobBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dbwrtcoordinatorDataSet = new QDRIVE___WRT_Coordinator.dbwrtcoordinatorDataSet();
             this.dtEquipNameReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -115,6 +115,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
+            this.empidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empperDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbInsurance = new System.Windows.Forms.TabPage();
             this.pnlInsurance = new System.Windows.Forms.Panel();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
@@ -198,29 +202,12 @@
             this.cbJobSiteStatus = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
             this.dgvJobSite = new System.Windows.Forms.DataGridView();
-            this.jobidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobstatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobdatestartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobdateendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.insidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custcityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobclaimnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbEquipment = new System.Windows.Forms.TabPage();
             this.pnlEquipment = new System.Windows.Forms.Panel();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.dgvAssignEquip = new System.Windows.Forms.DataGridView();
-            this.jobequipdateassignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobequipdatepickupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equipnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobequipcountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobequipstatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobidDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coidDataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtEquipNameJobBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.lblScopedJobID = new System.Windows.Forms.Label();
@@ -228,16 +215,6 @@
             this.lblScopedCustID = new System.Windows.Forms.Label();
             this.btnAssignEquip = new System.Windows.Forms.Button();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.jobidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobstatusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobdatestartDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobdateendDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.insidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custnameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coidDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custcityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.job_claim_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbljobIDASSIGNED = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.dgvAssignedJobSites = new System.Windows.Forms.DataGridView();
@@ -256,12 +233,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.dataGridView10 = new System.Windows.Forms.DataGridView();
-            this.equipidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equipnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equipstockinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equipstockoutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equipstockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coidDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -407,10 +378,39 @@
             this.dtReportCommDetailTableAdapter = new QDRIVE___WRT_Coordinator.dbwrtcoordinatorDataSetTableAdapters.dtReportCommDetailTableAdapter();
             this.dtReportCommDetailEmpTableAdapter = new QDRIVE___WRT_Coordinator.dbwrtcoordinatorDataSetTableAdapters.dtReportCommDetailEmpTableAdapter();
             this.dtEmployeeCommTableAdapter = new QDRIVE___WRT_Coordinator.dbwrtcoordinatorDataSetTableAdapters.dtEmployeeCommTableAdapter();
-            this.empidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empperDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobequipdateassignDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobequipdatepickupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobequipcountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobequipstatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobidDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coidDataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobstatusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobdatestartDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobdateendDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custnameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coidDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custcityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.job_claim_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipstockinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipstockoutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipstockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coidDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobstatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custcityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobclaimnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobdatestartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobdateendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtEquipPickupCustJobBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbwrtcoordinatorDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEquipNameReportBindingSource)).BeginInit();
@@ -582,7 +582,7 @@
             this.tcMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(843, 587);
+            this.tcMain.Size = new System.Drawing.Size(1108, 587);
             this.tcMain.TabIndex = 0;
             // 
             // tbWelcome
@@ -1075,7 +1075,40 @@
             this.dgvEmployees.Size = new System.Drawing.Size(319, 246);
             this.dgvEmployees.TabIndex = 0;
             this.dgvEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellClick);
-            this.dgvEmployees.Columns[2].DefaultCellStyle.Format = "#.000\\%";
+            // 
+            // empidDataGridViewTextBoxColumn
+            // 
+            this.empidDataGridViewTextBoxColumn.DataPropertyName = "emp_id";
+            this.empidDataGridViewTextBoxColumn.HeaderText = "emp_id";
+            this.empidDataGridViewTextBoxColumn.Name = "empidDataGridViewTextBoxColumn";
+            this.empidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.empidDataGridViewTextBoxColumn.Visible = false;
+            this.empidDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // empnameDataGridViewTextBoxColumn
+            // 
+            this.empnameDataGridViewTextBoxColumn.DataPropertyName = "emp_name";
+            this.empnameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.empnameDataGridViewTextBoxColumn.Name = "empnameDataGridViewTextBoxColumn";
+            this.empnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.empnameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // empperDataGridViewTextBoxColumn
+            // 
+            this.empperDataGridViewTextBoxColumn.DataPropertyName = "emp_per";
+            dataGridViewCellStyle3.NullValue = null;
+            this.empperDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.empperDataGridViewTextBoxColumn.HeaderText = "Percent";
+            this.empperDataGridViewTextBoxColumn.Name = "empperDataGridViewTextBoxColumn";
+            this.empperDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // coidDataGridViewTextBoxColumn
+            // 
+            this.coidDataGridViewTextBoxColumn.DataPropertyName = "co_id";
+            this.coidDataGridViewTextBoxColumn.HeaderText = "co_id";
+            this.coidDataGridViewTextBoxColumn.Name = "coidDataGridViewTextBoxColumn";
+            this.coidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.coidDataGridViewTextBoxColumn.Visible = false;
             // 
             // tbInsurance
             // 
@@ -1250,7 +1283,7 @@
             this.tbCustomer.Location = new System.Drawing.Point(4, 25);
             this.tbCustomer.Name = "tbCustomer";
             this.tbCustomer.Padding = new System.Windows.Forms.Padding(3);
-            this.tbCustomer.Size = new System.Drawing.Size(835, 558);
+            this.tbCustomer.Size = new System.Drawing.Size(1100, 558);
             this.tbCustomer.TabIndex = 3;
             this.tbCustomer.Text = "Customer Center";
             this.tbCustomer.UseVisualStyleBackColor = true;
@@ -1263,7 +1296,7 @@
             this.pnlJobs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlJobs.Location = new System.Drawing.Point(3, 3);
             this.pnlJobs.Name = "pnlJobs";
-            this.pnlJobs.Size = new System.Drawing.Size(829, 552);
+            this.pnlJobs.Size = new System.Drawing.Size(1094, 552);
             this.pnlJobs.TabIndex = 0;
             // 
             // groupBox8
@@ -1277,7 +1310,7 @@
             this.groupBox8.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(230, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(594, 523);
+            this.groupBox8.Size = new System.Drawing.Size(859, 523);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Customer Information";
@@ -1300,7 +1333,7 @@
             this.groupBox27.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox27.Location = new System.Drawing.Point(302, 254);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(286, 255);
+            this.groupBox27.Size = new System.Drawing.Size(551, 255);
             this.groupBox27.TabIndex = 28;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Edit Customer";
@@ -1440,7 +1473,7 @@
             this.groupBox26.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox26.Location = new System.Drawing.Point(16, 254);
             this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Size = new System.Drawing.Size(280, 255);
+            this.groupBox26.Size = new System.Drawing.Size(545, 255);
             this.groupBox26.TabIndex = 22;
             this.groupBox26.TabStop = false;
             this.groupBox26.Text = "New Customer";
@@ -1584,7 +1617,7 @@
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvJobs.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvJobs.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvJobs.Size = new System.Drawing.Size(582, 213);
+            this.dgvJobs.Size = new System.Drawing.Size(847, 213);
             this.dgvJobs.TabIndex = 0;
             // 
             // jobclaimnumberDataGridViewTextBoxColumn2
@@ -1767,7 +1800,7 @@
             this.tbJobSite.Location = new System.Drawing.Point(4, 25);
             this.tbJobSite.Name = "tbJobSite";
             this.tbJobSite.Padding = new System.Windows.Forms.Padding(3);
-            this.tbJobSite.Size = new System.Drawing.Size(835, 558);
+            this.tbJobSite.Size = new System.Drawing.Size(1100, 558);
             this.tbJobSite.TabIndex = 8;
             this.tbJobSite.Text = "Job Site Center";
             this.tbJobSite.UseVisualStyleBackColor = true;
@@ -1780,7 +1813,7 @@
             this.pnlJobSite.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlJobSite.Location = new System.Drawing.Point(3, 3);
             this.pnlJobSite.Name = "pnlJobSite";
-            this.pnlJobSite.Size = new System.Drawing.Size(829, 552);
+            this.pnlJobSite.Size = new System.Drawing.Size(1094, 552);
             this.pnlJobSite.TabIndex = 0;
             // 
             // btnCreateJobSite
@@ -1788,7 +1821,7 @@
             this.btnCreateJobSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateJobSite.BackColor = System.Drawing.Color.White;
             this.btnCreateJobSite.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateJobSite.Location = new System.Drawing.Point(507, 407);
+            this.btnCreateJobSite.Location = new System.Drawing.Point(772, 407);
             this.btnCreateJobSite.Name = "btnCreateJobSite";
             this.btnCreateJobSite.Size = new System.Drawing.Size(163, 80);
             this.btnCreateJobSite.TabIndex = 5;
@@ -1814,7 +1847,7 @@
             this.groupBox20.Controls.Add(this.label47);
             this.groupBox20.Controls.Add(this.label45);
             this.groupBox20.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox20.Location = new System.Drawing.Point(416, 3);
+            this.groupBox20.Location = new System.Drawing.Point(681, 3);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(366, 363);
             this.groupBox20.TabIndex = 4;
@@ -1994,7 +2027,7 @@
             this.groupBox19.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox19.Location = new System.Drawing.Point(3, 3);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(370, 523);
+            this.groupBox19.Size = new System.Drawing.Size(635, 544);
             this.groupBox19.TabIndex = 3;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Job Sites";
@@ -2049,108 +2082,22 @@
             this.dgvJobSite.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.jobidDataGridViewTextBoxColumn,
             this.jobstatusDataGridViewTextBoxColumn,
-            this.jobdatestartDataGridViewTextBoxColumn,
-            this.jobdateendDataGridViewTextBoxColumn,
             this.custidDataGridViewTextBoxColumn,
             this.insidDataGridViewTextBoxColumn,
             this.custnameDataGridViewTextBoxColumn,
             this.coidDataGridViewTextBoxColumn1,
             this.custcityDataGridViewTextBoxColumn,
-            this.jobclaimnumberDataGridViewTextBoxColumn});
+            this.jobclaimnumberDataGridViewTextBoxColumn,
+            this.jobdatestartDataGridViewTextBoxColumn,
+            this.jobdateendDataGridViewTextBoxColumn});
             this.dgvJobSite.DataSource = this.dtjobcustBindingSource;
             this.dgvJobSite.Location = new System.Drawing.Point(6, 72);
             this.dgvJobSite.Name = "dgvJobSite";
             this.dgvJobSite.ReadOnly = true;
             this.dgvJobSite.RowHeadersVisible = false;
-            this.dgvJobSite.Size = new System.Drawing.Size(358, 431);
+            this.dgvJobSite.Size = new System.Drawing.Size(623, 452);
             this.dgvJobSite.TabIndex = 0;
             this.dgvJobSite.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJobSite_CellClick);
-            // 
-            // jobidDataGridViewTextBoxColumn
-            // 
-            this.jobidDataGridViewTextBoxColumn.DataPropertyName = "job_id";
-            this.jobidDataGridViewTextBoxColumn.HeaderText = "job_id";
-            this.jobidDataGridViewTextBoxColumn.Name = "jobidDataGridViewTextBoxColumn";
-            this.jobidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobidDataGridViewTextBoxColumn.Visible = false;
-            this.jobidDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // jobstatusDataGridViewTextBoxColumn
-            // 
-            this.jobstatusDataGridViewTextBoxColumn.DataPropertyName = "job_status";
-            this.jobstatusDataGridViewTextBoxColumn.HeaderText = "job_status";
-            this.jobstatusDataGridViewTextBoxColumn.Name = "jobstatusDataGridViewTextBoxColumn";
-            this.jobstatusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobstatusDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // jobdatestartDataGridViewTextBoxColumn
-            // 
-            this.jobdatestartDataGridViewTextBoxColumn.DataPropertyName = "job_date_start";
-            this.jobdatestartDataGridViewTextBoxColumn.HeaderText = "job_date_start";
-            this.jobdatestartDataGridViewTextBoxColumn.Name = "jobdatestartDataGridViewTextBoxColumn";
-            this.jobdatestartDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobdatestartDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // jobdateendDataGridViewTextBoxColumn
-            // 
-            this.jobdateendDataGridViewTextBoxColumn.DataPropertyName = "job_date_end";
-            this.jobdateendDataGridViewTextBoxColumn.HeaderText = "job_date_end";
-            this.jobdateendDataGridViewTextBoxColumn.Name = "jobdateendDataGridViewTextBoxColumn";
-            this.jobdateendDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobdateendDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // custidDataGridViewTextBoxColumn
-            // 
-            this.custidDataGridViewTextBoxColumn.DataPropertyName = "cust_id";
-            this.custidDataGridViewTextBoxColumn.HeaderText = "cust_id";
-            this.custidDataGridViewTextBoxColumn.Name = "custidDataGridViewTextBoxColumn";
-            this.custidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.custidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // insidDataGridViewTextBoxColumn
-            // 
-            this.insidDataGridViewTextBoxColumn.DataPropertyName = "ins_id";
-            this.insidDataGridViewTextBoxColumn.HeaderText = "ins_id";
-            this.insidDataGridViewTextBoxColumn.Name = "insidDataGridViewTextBoxColumn";
-            this.insidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.insidDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // custnameDataGridViewTextBoxColumn
-            // 
-            this.custnameDataGridViewTextBoxColumn.DataPropertyName = "cust_name";
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custnameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
-            this.custnameDataGridViewTextBoxColumn.HeaderText = "Customer";
-            this.custnameDataGridViewTextBoxColumn.Name = "custnameDataGridViewTextBoxColumn";
-            this.custnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.custnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // coidDataGridViewTextBoxColumn1
-            // 
-            this.coidDataGridViewTextBoxColumn1.DataPropertyName = "co_id";
-            this.coidDataGridViewTextBoxColumn1.HeaderText = "co_id";
-            this.coidDataGridViewTextBoxColumn1.Name = "coidDataGridViewTextBoxColumn1";
-            this.coidDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.coidDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // custcityDataGridViewTextBoxColumn
-            // 
-            this.custcityDataGridViewTextBoxColumn.DataPropertyName = "cust_city";
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custcityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
-            this.custcityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.custcityDataGridViewTextBoxColumn.Name = "custcityDataGridViewTextBoxColumn";
-            this.custcityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // jobclaimnumberDataGridViewTextBoxColumn
-            // 
-            this.jobclaimnumberDataGridViewTextBoxColumn.DataPropertyName = "job_claim_number";
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jobclaimnumberDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
-            this.jobclaimnumberDataGridViewTextBoxColumn.HeaderText = "Claim No.";
-            this.jobclaimnumberDataGridViewTextBoxColumn.Name = "jobclaimnumberDataGridViewTextBoxColumn";
-            this.jobclaimnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobclaimnumberDataGridViewTextBoxColumn.Width = 125;
             // 
             // tbEquipment
             // 
@@ -2158,7 +2105,7 @@
             this.tbEquipment.Location = new System.Drawing.Point(4, 25);
             this.tbEquipment.Name = "tbEquipment";
             this.tbEquipment.Padding = new System.Windows.Forms.Padding(3);
-            this.tbEquipment.Size = new System.Drawing.Size(835, 558);
+            this.tbEquipment.Size = new System.Drawing.Size(1100, 558);
             this.tbEquipment.TabIndex = 7;
             this.tbEquipment.Text = "Equipment Center";
             this.tbEquipment.UseVisualStyleBackColor = true;
@@ -2169,7 +2116,7 @@
             this.pnlEquipment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEquipment.Location = new System.Drawing.Point(3, 3);
             this.pnlEquipment.Name = "pnlEquipment";
-            this.pnlEquipment.Size = new System.Drawing.Size(829, 552);
+            this.pnlEquipment.Size = new System.Drawing.Size(1094, 552);
             this.pnlEquipment.TabIndex = 0;
             // 
             // tabControl3
@@ -2180,7 +2127,7 @@
             this.tabControl3.Location = new System.Drawing.Point(0, 0);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(829, 552);
+            this.tabControl3.Size = new System.Drawing.Size(1094, 552);
             this.tabControl3.TabIndex = 1;
             // 
             // tabPage6
@@ -2193,7 +2140,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(821, 523);
+            this.tabPage6.Size = new System.Drawing.Size(1086, 523);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "Assignment";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2203,9 +2150,9 @@
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.dgvAssignEquip);
             this.groupBox7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(639, 255);
+            this.groupBox7.Location = new System.Drawing.Point(805, 279);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(176, 201);
+            this.groupBox7.Size = new System.Drawing.Size(275, 201);
             this.groupBox7.TabIndex = 7;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Equipment Detail";
@@ -2228,73 +2175,12 @@
             this.jobidDataGridViewTextBoxColumn4,
             this.coidDataGridViewTextBoxColumn6});
             this.dgvAssignEquip.DataSource = this.dtEquipNameJobBindingSource;
-            this.dgvAssignEquip.Location = new System.Drawing.Point(6, 21);
+            this.dgvAssignEquip.Location = new System.Drawing.Point(15, 21);
             this.dgvAssignEquip.Name = "dgvAssignEquip";
             this.dgvAssignEquip.ReadOnly = true;
             this.dgvAssignEquip.RowHeadersVisible = false;
-            this.dgvAssignEquip.Size = new System.Drawing.Size(164, 174);
+            this.dgvAssignEquip.Size = new System.Drawing.Size(254, 174);
             this.dgvAssignEquip.TabIndex = 1;
-            // 
-            // jobequipdateassignDataGridViewTextBoxColumn
-            // 
-            this.jobequipdateassignDataGridViewTextBoxColumn.DataPropertyName = "jobequip_date_assign";
-            this.jobequipdateassignDataGridViewTextBoxColumn.HeaderText = "jobequip_date_assign";
-            this.jobequipdateassignDataGridViewTextBoxColumn.Name = "jobequipdateassignDataGridViewTextBoxColumn";
-            this.jobequipdateassignDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobequipdateassignDataGridViewTextBoxColumn.Visible = false;
-            this.jobequipdateassignDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // jobequipdatepickupDataGridViewTextBoxColumn
-            // 
-            this.jobequipdatepickupDataGridViewTextBoxColumn.DataPropertyName = "jobequip_date_pickup";
-            this.jobequipdatepickupDataGridViewTextBoxColumn.HeaderText = "jobequip_date_pickup";
-            this.jobequipdatepickupDataGridViewTextBoxColumn.Name = "jobequipdatepickupDataGridViewTextBoxColumn";
-            this.jobequipdatepickupDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobequipdatepickupDataGridViewTextBoxColumn.Visible = false;
-            this.jobequipdatepickupDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // equipnameDataGridViewTextBoxColumn1
-            // 
-            this.equipnameDataGridViewTextBoxColumn1.DataPropertyName = "equip_name";
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equipnameDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle14;
-            this.equipnameDataGridViewTextBoxColumn1.HeaderText = "Equipment";
-            this.equipnameDataGridViewTextBoxColumn1.Name = "equipnameDataGridViewTextBoxColumn1";
-            this.equipnameDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // jobequipcountDataGridViewTextBoxColumn
-            // 
-            this.jobequipcountDataGridViewTextBoxColumn.DataPropertyName = "jobequip_count";
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jobequipcountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
-            this.jobequipcountDataGridViewTextBoxColumn.HeaderText = "Count";
-            this.jobequipcountDataGridViewTextBoxColumn.Name = "jobequipcountDataGridViewTextBoxColumn";
-            this.jobequipcountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobequipcountDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // jobequipstatusDataGridViewTextBoxColumn
-            // 
-            this.jobequipstatusDataGridViewTextBoxColumn.DataPropertyName = "jobequip_status";
-            this.jobequipstatusDataGridViewTextBoxColumn.HeaderText = "jobequip_status";
-            this.jobequipstatusDataGridViewTextBoxColumn.Name = "jobequipstatusDataGridViewTextBoxColumn";
-            this.jobequipstatusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jobequipstatusDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // jobidDataGridViewTextBoxColumn4
-            // 
-            this.jobidDataGridViewTextBoxColumn4.DataPropertyName = "job_id";
-            this.jobidDataGridViewTextBoxColumn4.HeaderText = "job_id";
-            this.jobidDataGridViewTextBoxColumn4.Name = "jobidDataGridViewTextBoxColumn4";
-            this.jobidDataGridViewTextBoxColumn4.ReadOnly = true;
-            this.jobidDataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // coidDataGridViewTextBoxColumn6
-            // 
-            this.coidDataGridViewTextBoxColumn6.DataPropertyName = "co_id";
-            this.coidDataGridViewTextBoxColumn6.HeaderText = "co_id";
-            this.coidDataGridViewTextBoxColumn6.Name = "coidDataGridViewTextBoxColumn6";
-            this.coidDataGridViewTextBoxColumn6.ReadOnly = true;
-            this.coidDataGridViewTextBoxColumn6.Visible = false;
             // 
             // dtEquipNameJobBindingSource
             // 
@@ -2310,9 +2196,9 @@
             this.groupBox21.Controls.Add(this.btnAssignEquip);
             this.groupBox21.Controls.Add(this.dataGridView5);
             this.groupBox21.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox21.Location = new System.Drawing.Point(305, 3);
+            this.groupBox21.Location = new System.Drawing.Point(487, 6);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(507, 249);
+            this.groupBox21.Size = new System.Drawing.Size(587, 252);
             this.groupBox21.TabIndex = 5;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Scoped Job Sites";
@@ -2321,7 +2207,7 @@
             // 
             this.lblScopedJobID.AutoSize = true;
             this.lblScopedJobID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtjobcustBindingSourceEQUIP, "job_id", true));
-            this.lblScopedJobID.Location = new System.Drawing.Point(322, 130);
+            this.lblScopedJobID.Location = new System.Drawing.Point(487, 85);
             this.lblScopedJobID.Name = "lblScopedJobID";
             this.lblScopedJobID.Size = new System.Drawing.Size(53, 20);
             this.lblScopedJobID.TabIndex = 19;
@@ -2337,7 +2223,7 @@
             // 
             this.lblScopedCustID.AutoSize = true;
             this.lblScopedCustID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtjobcustBindingSourceEQUIP, "cust_name", true));
-            this.lblScopedCustID.Location = new System.Drawing.Point(322, 110);
+            this.lblScopedCustID.Location = new System.Drawing.Point(487, 65);
             this.lblScopedCustID.Name = "lblScopedCustID";
             this.lblScopedCustID.Size = new System.Drawing.Size(53, 20);
             this.lblScopedCustID.TabIndex = 18;
@@ -2349,7 +2235,7 @@
             this.btnAssignEquip.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnAssignEquip.BackColor = System.Drawing.Color.White;
             this.btnAssignEquip.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssignEquip.Location = new System.Drawing.Point(326, 28);
+            this.btnAssignEquip.Location = new System.Drawing.Point(406, 29);
             this.btnAssignEquip.Name = "btnAssignEquip";
             this.btnAssignEquip.Size = new System.Drawing.Size(134, 33);
             this.btnAssignEquip.TabIndex = 17;
@@ -2378,101 +2264,17 @@
             this.custcityDataGridViewTextBoxColumn1,
             this.job_claim_number});
             this.dataGridView5.DataSource = this.dtjobcustBindingSourceEQUIP;
-            this.dataGridView5.Location = new System.Drawing.Point(6, 21);
+            this.dataGridView5.Location = new System.Drawing.Point(6, 18);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.ReadOnly = true;
             this.dataGridView5.RowHeadersVisible = false;
-            this.dataGridView5.Size = new System.Drawing.Size(310, 222);
+            this.dataGridView5.Size = new System.Drawing.Size(390, 225);
             this.dataGridView5.TabIndex = 1;
-            // 
-            // jobidDataGridViewTextBoxColumn2
-            // 
-            this.jobidDataGridViewTextBoxColumn2.DataPropertyName = "job_id";
-            this.jobidDataGridViewTextBoxColumn2.HeaderText = "job_id";
-            this.jobidDataGridViewTextBoxColumn2.Name = "jobidDataGridViewTextBoxColumn2";
-            this.jobidDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.jobidDataGridViewTextBoxColumn2.Visible = false;
-            this.jobidDataGridViewTextBoxColumn2.Width = 5;
-            // 
-            // jobstatusDataGridViewTextBoxColumn2
-            // 
-            this.jobstatusDataGridViewTextBoxColumn2.DataPropertyName = "job_status";
-            this.jobstatusDataGridViewTextBoxColumn2.HeaderText = "job_status";
-            this.jobstatusDataGridViewTextBoxColumn2.Name = "jobstatusDataGridViewTextBoxColumn2";
-            this.jobstatusDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.jobstatusDataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // jobdatestartDataGridViewTextBoxColumn2
-            // 
-            this.jobdatestartDataGridViewTextBoxColumn2.DataPropertyName = "job_date_start";
-            this.jobdatestartDataGridViewTextBoxColumn2.HeaderText = "job_date_start";
-            this.jobdatestartDataGridViewTextBoxColumn2.Name = "jobdatestartDataGridViewTextBoxColumn2";
-            this.jobdatestartDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.jobdatestartDataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // jobdateendDataGridViewTextBoxColumn2
-            // 
-            this.jobdateendDataGridViewTextBoxColumn2.DataPropertyName = "job_date_end";
-            this.jobdateendDataGridViewTextBoxColumn2.HeaderText = "job_date_end";
-            this.jobdateendDataGridViewTextBoxColumn2.Name = "jobdateendDataGridViewTextBoxColumn2";
-            this.jobdateendDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.jobdateendDataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // custidDataGridViewTextBoxColumn2
-            // 
-            this.custidDataGridViewTextBoxColumn2.DataPropertyName = "cust_id";
-            this.custidDataGridViewTextBoxColumn2.HeaderText = "cust_id";
-            this.custidDataGridViewTextBoxColumn2.Name = "custidDataGridViewTextBoxColumn2";
-            this.custidDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.custidDataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // insidDataGridViewTextBoxColumn2
-            // 
-            this.insidDataGridViewTextBoxColumn2.DataPropertyName = "ins_id";
-            this.insidDataGridViewTextBoxColumn2.HeaderText = "ins_id";
-            this.insidDataGridViewTextBoxColumn2.Name = "insidDataGridViewTextBoxColumn2";
-            this.insidDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.insidDataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // custnameDataGridViewTextBoxColumn2
-            // 
-            this.custnameDataGridViewTextBoxColumn2.DataPropertyName = "cust_name";
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custnameDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle16;
-            this.custnameDataGridViewTextBoxColumn2.HeaderText = "Customer";
-            this.custnameDataGridViewTextBoxColumn2.Name = "custnameDataGridViewTextBoxColumn2";
-            this.custnameDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // coidDataGridViewTextBoxColumn3
-            // 
-            this.coidDataGridViewTextBoxColumn3.DataPropertyName = "co_id";
-            this.coidDataGridViewTextBoxColumn3.HeaderText = "co_id";
-            this.coidDataGridViewTextBoxColumn3.Name = "coidDataGridViewTextBoxColumn3";
-            this.coidDataGridViewTextBoxColumn3.ReadOnly = true;
-            this.coidDataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // custcityDataGridViewTextBoxColumn1
-            // 
-            this.custcityDataGridViewTextBoxColumn1.DataPropertyName = "cust_city";
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custcityDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle17;
-            this.custcityDataGridViewTextBoxColumn1.HeaderText = "City";
-            this.custcityDataGridViewTextBoxColumn1.Name = "custcityDataGridViewTextBoxColumn1";
-            this.custcityDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // job_claim_number
-            // 
-            this.job_claim_number.DataPropertyName = "job_claim_number";
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.job_claim_number.DefaultCellStyle = dataGridViewCellStyle18;
-            this.job_claim_number.HeaderText = "Claim No.";
-            this.job_claim_number.Name = "job_claim_number";
-            this.job_claim_number.ReadOnly = true;
             // 
             // lbljobIDASSIGNED
             // 
             this.lbljobIDASSIGNED.AutoSize = true;
-            this.lbljobIDASSIGNED.Location = new System.Drawing.Point(642, 453);
+            this.lbljobIDASSIGNED.Location = new System.Drawing.Point(817, 484);
             this.lbljobIDASSIGNED.Name = "lbljobIDASSIGNED";
             this.lbljobIDASSIGNED.Size = new System.Drawing.Size(42, 16);
             this.lbljobIDASSIGNED.TabIndex = 8;
@@ -2484,9 +2286,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox14.Controls.Add(this.dgvAssignedJobSites);
             this.groupBox14.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox14.Location = new System.Drawing.Point(305, 255);
+            this.groupBox14.Location = new System.Drawing.Point(430, 272);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(328, 265);
+            this.groupBox14.Size = new System.Drawing.Size(369, 245);
             this.groupBox14.TabIndex = 6;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Assigned Job Sites";
@@ -2516,7 +2318,7 @@
             this.dgvAssignedJobSites.Name = "dgvAssignedJobSites";
             this.dgvAssignedJobSites.ReadOnly = true;
             this.dgvAssignedJobSites.RowHeadersVisible = false;
-            this.dgvAssignedJobSites.Size = new System.Drawing.Size(315, 234);
+            this.dgvAssignedJobSites.Size = new System.Drawing.Size(356, 214);
             this.dgvAssignedJobSites.TabIndex = 1;
             this.dgvAssignedJobSites.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAssignedJobSites_CellClick);
             // 
@@ -2619,7 +2421,7 @@
             this.groupBox22.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox22.Location = new System.Drawing.Point(3, 0);
             this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(296, 520);
+            this.groupBox22.Size = new System.Drawing.Size(391, 523);
             this.groupBox22.TabIndex = 4;
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "Equipment Inventory";
@@ -2629,7 +2431,7 @@
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button6.BackColor = System.Drawing.Color.White;
             this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(172, 481);
+            this.button6.Location = new System.Drawing.Point(267, 484);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(117, 33);
             this.button6.TabIndex = 16;
@@ -2641,7 +2443,7 @@
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button7.BackColor = System.Drawing.Color.White;
             this.button7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(5, 481);
+            this.button7.Location = new System.Drawing.Point(5, 484);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(117, 33);
             this.button7.TabIndex = 15;
@@ -2669,56 +2471,8 @@
             this.dataGridView10.Name = "dataGridView10";
             this.dataGridView10.ReadOnly = true;
             this.dataGridView10.RowHeadersVisible = false;
-            this.dataGridView10.Size = new System.Drawing.Size(283, 456);
+            this.dataGridView10.Size = new System.Drawing.Size(378, 459);
             this.dataGridView10.TabIndex = 0;
-            // 
-            // equipidDataGridViewTextBoxColumn
-            // 
-            this.equipidDataGridViewTextBoxColumn.DataPropertyName = "equip_id";
-            this.equipidDataGridViewTextBoxColumn.HeaderText = "equip_id";
-            this.equipidDataGridViewTextBoxColumn.Name = "equipidDataGridViewTextBoxColumn";
-            this.equipidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.equipidDataGridViewTextBoxColumn.Visible = false;
-            this.equipidDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // equipnameDataGridViewTextBoxColumn
-            // 
-            this.equipnameDataGridViewTextBoxColumn.DataPropertyName = "equip_name";
-            this.equipnameDataGridViewTextBoxColumn.HeaderText = "Equipment";
-            this.equipnameDataGridViewTextBoxColumn.Name = "equipnameDataGridViewTextBoxColumn";
-            this.equipnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // equipstockinDataGridViewTextBoxColumn
-            // 
-            this.equipstockinDataGridViewTextBoxColumn.DataPropertyName = "equip_stock_in";
-            this.equipstockinDataGridViewTextBoxColumn.HeaderText = "In";
-            this.equipstockinDataGridViewTextBoxColumn.Name = "equipstockinDataGridViewTextBoxColumn";
-            this.equipstockinDataGridViewTextBoxColumn.ReadOnly = true;
-            this.equipstockinDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // equipstockoutDataGridViewTextBoxColumn
-            // 
-            this.equipstockoutDataGridViewTextBoxColumn.DataPropertyName = "equip_stock_out";
-            this.equipstockoutDataGridViewTextBoxColumn.HeaderText = "Out";
-            this.equipstockoutDataGridViewTextBoxColumn.Name = "equipstockoutDataGridViewTextBoxColumn";
-            this.equipstockoutDataGridViewTextBoxColumn.ReadOnly = true;
-            this.equipstockoutDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // equipstockDataGridViewTextBoxColumn
-            // 
-            this.equipstockDataGridViewTextBoxColumn.DataPropertyName = "equip_stock";
-            this.equipstockDataGridViewTextBoxColumn.HeaderText = "Stock";
-            this.equipstockDataGridViewTextBoxColumn.Name = "equipstockDataGridViewTextBoxColumn";
-            this.equipstockDataGridViewTextBoxColumn.ReadOnly = true;
-            this.equipstockDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // coidDataGridViewTextBoxColumn4
-            // 
-            this.coidDataGridViewTextBoxColumn4.DataPropertyName = "co_id";
-            this.coidDataGridViewTextBoxColumn4.HeaderText = "co_id";
-            this.coidDataGridViewTextBoxColumn4.Name = "coidDataGridViewTextBoxColumn4";
-            this.coidDataGridViewTextBoxColumn4.ReadOnly = true;
-            this.coidDataGridViewTextBoxColumn4.Visible = false;
             // 
             // tabPage7
             // 
@@ -2726,7 +2480,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(821, 523);
+            this.tabPage7.Size = new System.Drawing.Size(1086, 523);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "Pickup";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -2739,7 +2493,7 @@
             this.tabControl2.Location = new System.Drawing.Point(3, 3);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(815, 517);
+            this.tabControl2.Size = new System.Drawing.Size(1080, 517);
             this.tabControl2.TabIndex = 19;
             // 
             // tabPage4
@@ -2755,7 +2509,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(807, 488);
+            this.tabPage4.Size = new System.Drawing.Size(1072, 488);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Pickup Locator";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2780,7 +2534,7 @@
             this.groupBox9.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(501, 111);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(250, 310);
+            this.groupBox9.Size = new System.Drawing.Size(250, 313);
             this.groupBox9.TabIndex = 5;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Job Site Detail";
@@ -2821,7 +2575,7 @@
             this.groupBox25.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox25.Location = new System.Drawing.Point(6, 66);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(233, 220);
+            this.groupBox25.Size = new System.Drawing.Size(233, 223);
             this.groupBox25.TabIndex = 1;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Equipment";
@@ -2848,7 +2602,7 @@
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
             this.dataGridView7.RowHeadersVisible = false;
-            this.dataGridView7.Size = new System.Drawing.Size(216, 191);
+            this.dataGridView7.Size = new System.Drawing.Size(216, 194);
             this.dataGridView7.TabIndex = 1;
             // 
             // equipnameDataGridViewTextBoxColumn2
@@ -2930,7 +2684,7 @@
             this.btnPickupEquip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnPickupEquip.BackColor = System.Drawing.Color.White;
             this.btnPickupEquip.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPickupEquip.Location = new System.Drawing.Point(7, 454);
+            this.btnPickupEquip.Location = new System.Drawing.Point(7, 430);
             this.btnPickupEquip.Name = "btnPickupEquip";
             this.btnPickupEquip.Size = new System.Drawing.Size(134, 33);
             this.btnPickupEquip.TabIndex = 18;
@@ -2946,7 +2700,7 @@
             this.groupBox24.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox24.Location = new System.Drawing.Point(254, 111);
             this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(228, 310);
+            this.groupBox24.Size = new System.Drawing.Size(228, 313);
             this.groupBox24.TabIndex = 1;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "Job Sites";
@@ -2963,7 +2717,7 @@
             this.lstJobSiteByLocation.ItemHeight = 16;
             this.lstJobSiteByLocation.Location = new System.Drawing.Point(6, 21);
             this.lstJobSiteByLocation.Name = "lstJobSiteByLocation";
-            this.lstJobSiteByLocation.Size = new System.Drawing.Size(216, 68);
+            this.lstJobSiteByLocation.Size = new System.Drawing.Size(216, 276);
             this.lstJobSiteByLocation.TabIndex = 0;
             this.lstJobSiteByLocation.ValueMember = "job_id";
             this.lstJobSiteByLocation.SelectedValueChanged += new System.EventHandler(this.lstJobSiteByLocation_SelectedValueChanged);
@@ -3002,7 +2756,7 @@
             this.groupBox23.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox23.Location = new System.Drawing.Point(7, 111);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(228, 310);
+            this.groupBox23.Size = new System.Drawing.Size(228, 313);
             this.groupBox23.TabIndex = 0;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Location";
@@ -3025,7 +2779,7 @@
             this.dgvJobLocation.Name = "dgvJobLocation";
             this.dgvJobLocation.ReadOnly = true;
             this.dgvJobLocation.RowHeadersVisible = false;
-            this.dgvJobLocation.Size = new System.Drawing.Size(216, 283);
+            this.dgvJobLocation.Size = new System.Drawing.Size(216, 286);
             this.dgvJobLocation.TabIndex = 0;
             this.dgvJobLocation.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJobLocation_CellClick);
             // 
@@ -3089,14 +2843,13 @@
             this.tbComm.Location = new System.Drawing.Point(4, 25);
             this.tbComm.Name = "tbComm";
             this.tbComm.Padding = new System.Windows.Forms.Padding(3);
-            this.tbComm.Size = new System.Drawing.Size(835, 558);
+            this.tbComm.Size = new System.Drawing.Size(1100, 558);
             this.tbComm.TabIndex = 4;
             this.tbComm.Text = "Commission Center";
             this.tbComm.UseVisualStyleBackColor = true;
             // 
             // pnlCommission
             // 
-            this.pnlCommission.Controls.Add(this.lbljobCommID);
             this.pnlCommission.Controls.Add(this.lblCOMMJobID);
             this.pnlCommission.Controls.Add(this.btnCloseJob);
             this.pnlCommission.Controls.Add(this.groupBox10);
@@ -3105,13 +2858,13 @@
             this.pnlCommission.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCommission.Location = new System.Drawing.Point(3, 3);
             this.pnlCommission.Name = "pnlCommission";
-            this.pnlCommission.Size = new System.Drawing.Size(829, 552);
+            this.pnlCommission.Size = new System.Drawing.Size(1094, 552);
             this.pnlCommission.TabIndex = 0;
             // 
             // lbljobCommID
             // 
             this.lbljobCommID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dtjobcustBindingSourceCOMM, "job_id", true));
-            this.lbljobCommID.Location = new System.Drawing.Point(405, 261);
+            this.lbljobCommID.Location = new System.Drawing.Point(6, 226);
             this.lbljobCommID.Name = "lbljobCommID";
             this.lbljobCommID.Size = new System.Drawing.Size(65, 22);
             this.lbljobCommID.TabIndex = 12;
@@ -3135,7 +2888,7 @@
             this.btnCloseJob.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCloseJob.BackColor = System.Drawing.Color.White;
             this.btnCloseJob.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseJob.Location = new System.Drawing.Point(269, 322);
+            this.btnCloseJob.Location = new System.Drawing.Point(291, 310);
             this.btnCloseJob.Name = "btnCloseJob";
             this.btnCloseJob.Size = new System.Drawing.Size(163, 80);
             this.btnCloseJob.TabIndex = 10;
@@ -3147,11 +2900,12 @@
             // 
             this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox10.Controls.Add(this.lbljobCommID);
             this.groupBox10.Controls.Add(this.lstAssignedEmployees);
             this.groupBox10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(263, 3);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(229, 180);
+            this.groupBox10.Size = new System.Drawing.Size(229, 258);
             this.groupBox10.TabIndex = 9;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Assigned Employees";
@@ -3168,7 +2922,7 @@
             this.lstAssignedEmployees.ItemHeight = 16;
             this.lstAssignedEmployees.Location = new System.Drawing.Point(6, 27);
             this.lstAssignedEmployees.Name = "lstAssignedEmployees";
-            this.lstAssignedEmployees.Size = new System.Drawing.Size(217, 132);
+            this.lstAssignedEmployees.Size = new System.Drawing.Size(217, 196);
             this.lstAssignedEmployees.TabIndex = 0;
             this.lstAssignedEmployees.ValueMember = "emp_id";
             this.lstAssignedEmployees.SelectedValueChanged += new System.EventHandler(this.lstAssignedEmployees_SelectedValueChanged);
@@ -3217,7 +2971,7 @@
             this.groupBox13.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox13.Location = new System.Drawing.Point(504, 3);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(320, 504);
+            this.groupBox13.Size = new System.Drawing.Size(585, 532);
             this.groupBox13.TabIndex = 7;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Commission Detail";
@@ -3582,7 +3336,7 @@
             this.groupBox12.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox12.Location = new System.Drawing.Point(9, 3);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(248, 399);
+            this.groupBox12.Size = new System.Drawing.Size(248, 532);
             this.groupBox12.TabIndex = 6;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Completed Job Sites";
@@ -3607,7 +3361,7 @@
             this.dgvCompleteJobSites.Name = "dgvCompleteJobSites";
             this.dgvCompleteJobSites.ReadOnly = true;
             this.dgvCompleteJobSites.RowHeadersVisible = false;
-            this.dgvCompleteJobSites.Size = new System.Drawing.Size(227, 368);
+            this.dgvCompleteJobSites.Size = new System.Drawing.Size(227, 501);
             this.dgvCompleteJobSites.TabIndex = 0;
             this.dgvCompleteJobSites.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCompleteJobSites_CellClick);
             // 
@@ -3724,7 +3478,7 @@
             this.rvEquipmentInventory.LocalReport.ReportEmbeddedResource = "QDRIVE___WRT_Coordinator.Reports.rptEquipInventory.rdlc";
             this.rvEquipmentInventory.Location = new System.Drawing.Point(3, 3);
             this.rvEquipmentInventory.Name = "rvEquipmentInventory";
-            this.rvEquipmentInventory.Size = new System.Drawing.Size(825, 617);
+            this.rvEquipmentInventory.Size = new System.Drawing.Size(825, 620);
             this.rvEquipmentInventory.TabIndex = 0;
             // 
             // tabPage2
@@ -3877,7 +3631,7 @@
             this.rvCommSummary.LocalReport.ReportEmbeddedResource = "QDRIVE___WRT_Coordinator.Reports.rptCommSummary.rdlc";
             this.rvCommSummary.Location = new System.Drawing.Point(265, 0);
             this.rvCommSummary.Name = "rvCommSummary";
-            this.rvCommSummary.Size = new System.Drawing.Size(552, 598);
+            this.rvCommSummary.Size = new System.Drawing.Size(552, 601);
             this.rvCommSummary.TabIndex = 0;
             // 
             // tabPage8
@@ -4169,45 +3923,291 @@
             // 
             this.dtEmployeeCommTableAdapter.ClearBeforeFill = true;
             // 
-            // empidDataGridViewTextBoxColumn
+            // jobequipdateassignDataGridViewTextBoxColumn
             // 
-            this.empidDataGridViewTextBoxColumn.DataPropertyName = "emp_id";
-            this.empidDataGridViewTextBoxColumn.HeaderText = "emp_id";
-            this.empidDataGridViewTextBoxColumn.Name = "empidDataGridViewTextBoxColumn";
-            this.empidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.empidDataGridViewTextBoxColumn.Visible = false;
-            this.empidDataGridViewTextBoxColumn.Width = 5;
+            this.jobequipdateassignDataGridViewTextBoxColumn.DataPropertyName = "jobequip_date_assign";
+            this.jobequipdateassignDataGridViewTextBoxColumn.HeaderText = "jobequip_date_assign";
+            this.jobequipdateassignDataGridViewTextBoxColumn.Name = "jobequipdateassignDataGridViewTextBoxColumn";
+            this.jobequipdateassignDataGridViewTextBoxColumn.ReadOnly = true;
+            this.jobequipdateassignDataGridViewTextBoxColumn.Visible = false;
+            this.jobequipdateassignDataGridViewTextBoxColumn.Width = 5;
             // 
-            // empnameDataGridViewTextBoxColumn
+            // jobequipdatepickupDataGridViewTextBoxColumn
             // 
-            this.empnameDataGridViewTextBoxColumn.DataPropertyName = "emp_name";
-            this.empnameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.empnameDataGridViewTextBoxColumn.Name = "empnameDataGridViewTextBoxColumn";
-            this.empnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.empnameDataGridViewTextBoxColumn.Width = 200;
+            this.jobequipdatepickupDataGridViewTextBoxColumn.DataPropertyName = "jobequip_date_pickup";
+            this.jobequipdatepickupDataGridViewTextBoxColumn.HeaderText = "jobequip_date_pickup";
+            this.jobequipdatepickupDataGridViewTextBoxColumn.Name = "jobequipdatepickupDataGridViewTextBoxColumn";
+            this.jobequipdatepickupDataGridViewTextBoxColumn.ReadOnly = true;
+            this.jobequipdatepickupDataGridViewTextBoxColumn.Visible = false;
+            this.jobequipdatepickupDataGridViewTextBoxColumn.Width = 5;
             // 
-            // empperDataGridViewTextBoxColumn
+            // equipnameDataGridViewTextBoxColumn1
             // 
-            this.empperDataGridViewTextBoxColumn.DataPropertyName = "emp_per";
-            dataGridViewCellStyle3.NullValue = null;
-            this.empperDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.empperDataGridViewTextBoxColumn.HeaderText = "Percent";
-            this.empperDataGridViewTextBoxColumn.Name = "empperDataGridViewTextBoxColumn";
-            this.empperDataGridViewTextBoxColumn.ReadOnly = true;
+            this.equipnameDataGridViewTextBoxColumn1.DataPropertyName = "equip_name";
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equipnameDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle14;
+            this.equipnameDataGridViewTextBoxColumn1.HeaderText = "Equipment";
+            this.equipnameDataGridViewTextBoxColumn1.Name = "equipnameDataGridViewTextBoxColumn1";
+            this.equipnameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.equipnameDataGridViewTextBoxColumn1.Width = 200;
             // 
-            // coidDataGridViewTextBoxColumn
+            // jobequipcountDataGridViewTextBoxColumn
             // 
-            this.coidDataGridViewTextBoxColumn.DataPropertyName = "co_id";
-            this.coidDataGridViewTextBoxColumn.HeaderText = "co_id";
-            this.coidDataGridViewTextBoxColumn.Name = "coidDataGridViewTextBoxColumn";
-            this.coidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.coidDataGridViewTextBoxColumn.Visible = false;
+            this.jobequipcountDataGridViewTextBoxColumn.DataPropertyName = "jobequip_count";
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jobequipcountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            this.jobequipcountDataGridViewTextBoxColumn.HeaderText = "Count";
+            this.jobequipcountDataGridViewTextBoxColumn.Name = "jobequipcountDataGridViewTextBoxColumn";
+            this.jobequipcountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.jobequipcountDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // jobequipstatusDataGridViewTextBoxColumn
+            // 
+            this.jobequipstatusDataGridViewTextBoxColumn.DataPropertyName = "jobequip_status";
+            this.jobequipstatusDataGridViewTextBoxColumn.HeaderText = "jobequip_status";
+            this.jobequipstatusDataGridViewTextBoxColumn.Name = "jobequipstatusDataGridViewTextBoxColumn";
+            this.jobequipstatusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.jobequipstatusDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // jobidDataGridViewTextBoxColumn4
+            // 
+            this.jobidDataGridViewTextBoxColumn4.DataPropertyName = "job_id";
+            this.jobidDataGridViewTextBoxColumn4.HeaderText = "job_id";
+            this.jobidDataGridViewTextBoxColumn4.Name = "jobidDataGridViewTextBoxColumn4";
+            this.jobidDataGridViewTextBoxColumn4.ReadOnly = true;
+            this.jobidDataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // coidDataGridViewTextBoxColumn6
+            // 
+            this.coidDataGridViewTextBoxColumn6.DataPropertyName = "co_id";
+            this.coidDataGridViewTextBoxColumn6.HeaderText = "co_id";
+            this.coidDataGridViewTextBoxColumn6.Name = "coidDataGridViewTextBoxColumn6";
+            this.coidDataGridViewTextBoxColumn6.ReadOnly = true;
+            this.coidDataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // jobidDataGridViewTextBoxColumn2
+            // 
+            this.jobidDataGridViewTextBoxColumn2.DataPropertyName = "job_id";
+            this.jobidDataGridViewTextBoxColumn2.HeaderText = "job_id";
+            this.jobidDataGridViewTextBoxColumn2.Name = "jobidDataGridViewTextBoxColumn2";
+            this.jobidDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.jobidDataGridViewTextBoxColumn2.Visible = false;
+            this.jobidDataGridViewTextBoxColumn2.Width = 5;
+            // 
+            // jobstatusDataGridViewTextBoxColumn2
+            // 
+            this.jobstatusDataGridViewTextBoxColumn2.DataPropertyName = "job_status";
+            this.jobstatusDataGridViewTextBoxColumn2.HeaderText = "job_status";
+            this.jobstatusDataGridViewTextBoxColumn2.Name = "jobstatusDataGridViewTextBoxColumn2";
+            this.jobstatusDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.jobstatusDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // jobdatestartDataGridViewTextBoxColumn2
+            // 
+            this.jobdatestartDataGridViewTextBoxColumn2.DataPropertyName = "job_date_start";
+            this.jobdatestartDataGridViewTextBoxColumn2.HeaderText = "job_date_start";
+            this.jobdatestartDataGridViewTextBoxColumn2.Name = "jobdatestartDataGridViewTextBoxColumn2";
+            this.jobdatestartDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.jobdatestartDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // jobdateendDataGridViewTextBoxColumn2
+            // 
+            this.jobdateendDataGridViewTextBoxColumn2.DataPropertyName = "job_date_end";
+            this.jobdateendDataGridViewTextBoxColumn2.HeaderText = "job_date_end";
+            this.jobdateendDataGridViewTextBoxColumn2.Name = "jobdateendDataGridViewTextBoxColumn2";
+            this.jobdateendDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.jobdateendDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // custidDataGridViewTextBoxColumn2
+            // 
+            this.custidDataGridViewTextBoxColumn2.DataPropertyName = "cust_id";
+            this.custidDataGridViewTextBoxColumn2.HeaderText = "cust_id";
+            this.custidDataGridViewTextBoxColumn2.Name = "custidDataGridViewTextBoxColumn2";
+            this.custidDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.custidDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // insidDataGridViewTextBoxColumn2
+            // 
+            this.insidDataGridViewTextBoxColumn2.DataPropertyName = "ins_id";
+            this.insidDataGridViewTextBoxColumn2.HeaderText = "ins_id";
+            this.insidDataGridViewTextBoxColumn2.Name = "insidDataGridViewTextBoxColumn2";
+            this.insidDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.insidDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // custnameDataGridViewTextBoxColumn2
+            // 
+            this.custnameDataGridViewTextBoxColumn2.DataPropertyName = "cust_name";
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custnameDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle16;
+            this.custnameDataGridViewTextBoxColumn2.HeaderText = "Customer";
+            this.custnameDataGridViewTextBoxColumn2.Name = "custnameDataGridViewTextBoxColumn2";
+            this.custnameDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.custnameDataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // coidDataGridViewTextBoxColumn3
+            // 
+            this.coidDataGridViewTextBoxColumn3.DataPropertyName = "co_id";
+            this.coidDataGridViewTextBoxColumn3.HeaderText = "co_id";
+            this.coidDataGridViewTextBoxColumn3.Name = "coidDataGridViewTextBoxColumn3";
+            this.coidDataGridViewTextBoxColumn3.ReadOnly = true;
+            this.coidDataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // custcityDataGridViewTextBoxColumn1
+            // 
+            this.custcityDataGridViewTextBoxColumn1.DataPropertyName = "cust_city";
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custcityDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle17;
+            this.custcityDataGridViewTextBoxColumn1.HeaderText = "City";
+            this.custcityDataGridViewTextBoxColumn1.Name = "custcityDataGridViewTextBoxColumn1";
+            this.custcityDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // job_claim_number
+            // 
+            this.job_claim_number.DataPropertyName = "job_claim_number";
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.job_claim_number.DefaultCellStyle = dataGridViewCellStyle18;
+            this.job_claim_number.HeaderText = "Claim No.";
+            this.job_claim_number.Name = "job_claim_number";
+            this.job_claim_number.ReadOnly = true;
+            // 
+            // equipidDataGridViewTextBoxColumn
+            // 
+            this.equipidDataGridViewTextBoxColumn.DataPropertyName = "equip_id";
+            this.equipidDataGridViewTextBoxColumn.HeaderText = "equip_id";
+            this.equipidDataGridViewTextBoxColumn.Name = "equipidDataGridViewTextBoxColumn";
+            this.equipidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.equipidDataGridViewTextBoxColumn.Visible = false;
+            this.equipidDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // equipnameDataGridViewTextBoxColumn
+            // 
+            this.equipnameDataGridViewTextBoxColumn.DataPropertyName = "equip_name";
+            this.equipnameDataGridViewTextBoxColumn.HeaderText = "Equipment";
+            this.equipnameDataGridViewTextBoxColumn.Name = "equipnameDataGridViewTextBoxColumn";
+            this.equipnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.equipnameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // equipstockinDataGridViewTextBoxColumn
+            // 
+            this.equipstockinDataGridViewTextBoxColumn.DataPropertyName = "equip_stock_in";
+            this.equipstockinDataGridViewTextBoxColumn.HeaderText = "In";
+            this.equipstockinDataGridViewTextBoxColumn.Name = "equipstockinDataGridViewTextBoxColumn";
+            this.equipstockinDataGridViewTextBoxColumn.ReadOnly = true;
+            this.equipstockinDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // equipstockoutDataGridViewTextBoxColumn
+            // 
+            this.equipstockoutDataGridViewTextBoxColumn.DataPropertyName = "equip_stock_out";
+            this.equipstockoutDataGridViewTextBoxColumn.HeaderText = "Out";
+            this.equipstockoutDataGridViewTextBoxColumn.Name = "equipstockoutDataGridViewTextBoxColumn";
+            this.equipstockoutDataGridViewTextBoxColumn.ReadOnly = true;
+            this.equipstockoutDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // equipstockDataGridViewTextBoxColumn
+            // 
+            this.equipstockDataGridViewTextBoxColumn.DataPropertyName = "equip_stock";
+            this.equipstockDataGridViewTextBoxColumn.HeaderText = "Stock";
+            this.equipstockDataGridViewTextBoxColumn.Name = "equipstockDataGridViewTextBoxColumn";
+            this.equipstockDataGridViewTextBoxColumn.ReadOnly = true;
+            this.equipstockDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // coidDataGridViewTextBoxColumn4
+            // 
+            this.coidDataGridViewTextBoxColumn4.DataPropertyName = "co_id";
+            this.coidDataGridViewTextBoxColumn4.HeaderText = "co_id";
+            this.coidDataGridViewTextBoxColumn4.Name = "coidDataGridViewTextBoxColumn4";
+            this.coidDataGridViewTextBoxColumn4.ReadOnly = true;
+            this.coidDataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // jobidDataGridViewTextBoxColumn
+            // 
+            this.jobidDataGridViewTextBoxColumn.DataPropertyName = "job_id";
+            this.jobidDataGridViewTextBoxColumn.HeaderText = "job_id";
+            this.jobidDataGridViewTextBoxColumn.Name = "jobidDataGridViewTextBoxColumn";
+            this.jobidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.jobidDataGridViewTextBoxColumn.Visible = false;
+            this.jobidDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // jobstatusDataGridViewTextBoxColumn
+            // 
+            this.jobstatusDataGridViewTextBoxColumn.DataPropertyName = "job_status";
+            this.jobstatusDataGridViewTextBoxColumn.HeaderText = "job_status";
+            this.jobstatusDataGridViewTextBoxColumn.Name = "jobstatusDataGridViewTextBoxColumn";
+            this.jobstatusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.jobstatusDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // custidDataGridViewTextBoxColumn
+            // 
+            this.custidDataGridViewTextBoxColumn.DataPropertyName = "cust_id";
+            this.custidDataGridViewTextBoxColumn.HeaderText = "cust_id";
+            this.custidDataGridViewTextBoxColumn.Name = "custidDataGridViewTextBoxColumn";
+            this.custidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.custidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // insidDataGridViewTextBoxColumn
+            // 
+            this.insidDataGridViewTextBoxColumn.DataPropertyName = "ins_id";
+            this.insidDataGridViewTextBoxColumn.HeaderText = "ins_id";
+            this.insidDataGridViewTextBoxColumn.Name = "insidDataGridViewTextBoxColumn";
+            this.insidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.insidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // custnameDataGridViewTextBoxColumn
+            // 
+            this.custnameDataGridViewTextBoxColumn.DataPropertyName = "cust_name";
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custnameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            this.custnameDataGridViewTextBoxColumn.HeaderText = "Customer";
+            this.custnameDataGridViewTextBoxColumn.Name = "custnameDataGridViewTextBoxColumn";
+            this.custnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.custnameDataGridViewTextBoxColumn.Width = 175;
+            // 
+            // coidDataGridViewTextBoxColumn1
+            // 
+            this.coidDataGridViewTextBoxColumn1.DataPropertyName = "co_id";
+            this.coidDataGridViewTextBoxColumn1.HeaderText = "co_id";
+            this.coidDataGridViewTextBoxColumn1.Name = "coidDataGridViewTextBoxColumn1";
+            this.coidDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.coidDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // custcityDataGridViewTextBoxColumn
+            // 
+            this.custcityDataGridViewTextBoxColumn.DataPropertyName = "cust_city";
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custcityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            this.custcityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.custcityDataGridViewTextBoxColumn.Name = "custcityDataGridViewTextBoxColumn";
+            this.custcityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jobclaimnumberDataGridViewTextBoxColumn
+            // 
+            this.jobclaimnumberDataGridViewTextBoxColumn.DataPropertyName = "job_claim_number";
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jobclaimnumberDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            this.jobclaimnumberDataGridViewTextBoxColumn.HeaderText = "Claim No.";
+            this.jobclaimnumberDataGridViewTextBoxColumn.Name = "jobclaimnumberDataGridViewTextBoxColumn";
+            this.jobclaimnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.jobclaimnumberDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // jobdatestartDataGridViewTextBoxColumn
+            // 
+            this.jobdatestartDataGridViewTextBoxColumn.DataPropertyName = "job_date_start";
+            this.jobdatestartDataGridViewTextBoxColumn.HeaderText = "Start Date";
+            this.jobdatestartDataGridViewTextBoxColumn.Name = "jobdatestartDataGridViewTextBoxColumn";
+            this.jobdatestartDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jobdateendDataGridViewTextBoxColumn
+            // 
+            this.jobdateendDataGridViewTextBoxColumn.DataPropertyName = "job_date_end";
+            this.jobdateendDataGridViewTextBoxColumn.HeaderText = "End Date";
+            this.jobdateendDataGridViewTextBoxColumn.Name = "jobdateendDataGridViewTextBoxColumn";
+            this.jobdateendDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 587);
+            this.ClientSize = new System.Drawing.Size(1224, 587);
             this.Controls.Add(this.tcMain);
             this.Controls.Add(this.msMenu);
             this.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4592,16 +4592,6 @@
         private System.Windows.Forms.CheckBox ckFilterByLocation;
         private System.Windows.Forms.TabPage tabPage5;
         private Microsoft.Reporting.WinForms.ReportViewer rvEquipPickup;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobidDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobstatusDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobdatestartDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobdateendDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custidDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn insidDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custnameDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custcityDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn job_claim_number;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobidDataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobstatusDataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobdatestartDataGridViewTextBoxColumn3;
@@ -4612,19 +4602,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn custcityDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobclaimnumberDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobequipdateassignDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobequipdatepickupDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn equipnameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobequipcountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobequipstatusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobidDataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn equipidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn equipnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn equipstockinDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn equipstockoutDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn equipstockDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn4;
         private Microsoft.Reporting.WinForms.ReportViewer rvEquipmentInventory;
         private System.Windows.Forms.BindingSource bsEquipInvCoReport;
         private System.Windows.Forms.TabControl tabControl4;
@@ -4659,16 +4636,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn custidDataGridViewTextBoxColumn4;
         private System.Windows.Forms.BindingSource bsEmployeeComm;
         private dbwrtcoordinatorDataSetTableAdapters.dtEmployeeCommTableAdapter dtEmployeeCommTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobstatusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobdatestartDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobdateendDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn insidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custcityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobclaimnumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobidDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobstatusDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobdatestartDataGridViewTextBoxColumn1;
@@ -4697,6 +4664,39 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn empnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn empperDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobstatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custcityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobclaimnumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobdatestartDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobdateendDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobequipdateassignDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobequipdatepickupDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipnameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobequipcountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobequipstatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobidDataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobidDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobstatusDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobdatestartDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobdateendDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custidDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insidDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custnameDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custcityDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn job_claim_number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipstockinDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipstockoutDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipstockDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coidDataGridViewTextBoxColumn4;
     }
 }
 
