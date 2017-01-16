@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.OleDb;
 
 namespace QDRIVE___WRT_Coordinator
 {
-    public partial class frmAssignEquip : Form
+    public partial class frmEditAssignedEquip : Form
     {
-        public frmAssignEquip()
+        public frmEditAssignedEquip()
         {
             InitializeComponent();
         }
@@ -21,7 +20,7 @@ namespace QDRIVE___WRT_Coordinator
         frmMain main = (frmMain)Application.OpenForms["frmMain"];
         public int jobId;
 
-        private void frmAssignEquip_Load(object sender, EventArgs e)
+        private void frmEditAssignedEquip_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dbwrtcoordinatorDataSet.dtEquipNameJob' table. You can move, or remove it, as needed.
             this.dtEquipNameJobTableAdapter.Fill(this.dbwrtcoordinatorDataSet.dtEquipNameJob);
@@ -35,7 +34,7 @@ namespace QDRIVE___WRT_Coordinator
             txtAssign.Focus();
         }
 
-        private void frmAssignEquip_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmEditAssignEquip_FormClosed(object sender, FormClosedEventArgs e)
         {
             main.Enabled = true;
 
@@ -96,7 +95,6 @@ namespace QDRIVE___WRT_Coordinator
 
         private void btnRemoveEquip_Click(object sender, EventArgs e)
         {
-
             if (Database.SelectStatementList("job_id", "tbjobequip", "job_id", jobId).Count > 0)
             {
                 int equipID = Convert.ToInt32(lblEquipID.Text);

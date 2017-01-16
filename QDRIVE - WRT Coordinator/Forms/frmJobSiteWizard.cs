@@ -16,7 +16,6 @@ namespace QDRIVE___WRT_Coordinator
         //variables to determine panel visibility
         private bool panelCustomer = true;
         //private bool panelJob;
-        string connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\dbwrtcoordinator.accdb";
         List<int> id = new List<int>();
         List<int> custIDs = new List<int>();
         frmMain main = (frmMain)Application.OpenForms["frmMain"];
@@ -28,15 +27,7 @@ namespace QDRIVE___WRT_Coordinator
 
         private void matchCustIDs()
         {
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                string sqlGetIDs = "SELECT cust_id FROM tbjob";
-                OleDbCommand cmdGetIDs = new OleDbCommand(sqlGetIDs, conn);
-                OleDbDataReader reader = cmdGetIDs.ExecuteReader();
-
-                while (reader.Read())
-                    custIDs.Add(reader.GetInt32(0));
-            }
+            custIDs = Database.SelectStatementList("cust_id", "tbjob");
         }
 
         private void frmJobSiteWizard_Load(object sender, EventArgs e)
@@ -104,15 +95,23 @@ namespace QDRIVE___WRT_Coordinator
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT emp_name FROM tbemployee WHERE emp_id = @id";
-            using (OleDbConnection conn = new OleDbConnection(connString))
+            string name = Database.SelectStatementString("emp_name", "tbemployee", "emp_id", Convert.ToInt32(lstEmployees.SelectedValue));
+            lstAssignedEmployees.Items.Add(name);
+            id.Add(Convert.ToInt32(lstEmployees.SelectedValue));
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            string name = lstAssignedEmployees.Text;
+            lstAssignedEmployees.Items.Remove(name);
+            int empId = Database.SelectStatementInt("emp_id", "tbemployee", "emp_name", name);
+            foreach(int i in id)
             {
-                conn.Open();
-                OleDbCommand cmd = new OleDbCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@id", OleDbType.Integer).Value = Convert.ToInt32(lstEmployees.SelectedValue);
-                string name = Convert.ToString(cmd.ExecuteScalar());
-                lstAssignedEmployees.Items.Add(name);
-                id.Add(Convert.ToInt32(lstEmployees.SelectedValue));
+                if (i.Equals(empId))
+                {
+                    id.Remove(i);
+                    break;
+                }
             }
         }
 
@@ -130,34 +129,12 @@ namespace QDRIVE___WRT_Coordinator
             string claim = txtClaimNo.Text;
             DateTime jobStart = DateTime.Parse(dtpJobStart.Text);
 
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                conn.Open();
-                string insert = "INSERT INTO tbjob (job_status, job_claim_number, job_date_start, cust_id, ins_id) VALUES (@status, @claim, @start, @cust, @ins)";
-                OleDbCommand cmdInsert = new OleDbCommand(insert, conn);
-                cmdInsert.Parameters.AddWithValue("@status", OleDbType.VarChar).Value = "Scoped";
-                cmdInsert.Parameters.AddWithValue("@claim", OleDbType.VarChar).Value = claim;
-                cmdInsert.Parameters.AddWithValue("@start", OleDbType.Date).Value = jobStart;
-                cmdInsert.Parameters.AddWithValue("@cust", OleDbType.Integer).Value = custid;
-                cmdInsert.Parameters.AddWithValue("@ins", OleDbType.Integer).Value = insurance;
-                cmdInsert.ExecuteNonQuery();
-            }
+            Database.insertStatement("tbjob", "job_status", "job_claim_number", "job_date_start", "cust_id", "ins_id",
+                "Scoped", claim, jobStart, custid, insurance);
 
             //empjob data
             int empjobpaystatus = 0;
-            int jobid;
-
-            //get job id
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                conn.Open();
-                string getJob = "SELECT job_id FROM tbjob WHERE cust_id = @cust AND job_date_start = @date";
-                OleDbCommand cmdJob = new OleDbCommand(getJob, conn);
-                cmdJob.Parameters.AddWithValue("@cust", OleDbType.Integer).Value = custid;
-                cmdJob.Parameters.AddWithValue("@date", OleDbType.Date).Value = jobStart;
-                cmdJob.ExecuteNonQuery();
-                jobid = Convert.ToInt32(cmdJob.ExecuteScalar());
-            }
+            int jobid = Database.SelectStatementInt("job_id", "tbjob", "cust_id", "job_date_start", custid, jobStart);
 
             //insert empjob array
             for(int i = 0; i < id.Count; i++)
@@ -187,5 +164,7 @@ namespace QDRIVE___WRT_Coordinator
         {
             tbcustomerBindingSource.Filter = string.Format("cust_name LIKE '{0}%' AND co_id = " + Convert.ToInt32(main.lstCompanies.SelectedValue) + "", txtSearchCustomer.Text);
         }
+
+
     }
 }

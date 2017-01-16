@@ -95,11 +95,23 @@
     <Compile Include="Forms\frmAssignEquip.Designer.cs">
       <DependentUpon>frmAssignEquip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmChangeEquip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChangeEquip.Designer.cs">
+      <DependentUpon>frmChangeEquip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCloseSite.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmCloseSite.Designer.cs">
       <DependentUpon>frmCloseSite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditAssignedEquip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditAssignedEquip.Designer.cs">
+      <DependentUpon>frmEditAssignedEquip.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmEditJobSite.cs">
       <SubType>Form</SubType>
@@ -121,6 +133,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmChangeEquip.resx">
+      <DependentUpon>frmChangeEquip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditAssignedEquip.resx">
+      <DependentUpon>frmEditAssignedEquip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditJobSite.resx">
       <DependentUpon>frmEditJobSite.cs</DependentUpon>
     </EmbeddedResource>

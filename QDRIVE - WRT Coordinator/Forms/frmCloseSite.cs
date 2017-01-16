@@ -14,7 +14,7 @@ namespace QDRIVE___WRT_Coordinator
     public partial class frmCloseSite : Form
     {
         frmMain main = (frmMain)Application.OpenForms["frmMain"];
-        string connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\dbwrtcoordinator.accdb";
+        int manual = 0;
 
         public frmCloseSite()
         {
@@ -25,7 +25,10 @@ namespace QDRIVE___WRT_Coordinator
         {
             //insert record into tbjobcomm
             int jobID = int.Parse(lblJobID.Text);
-            double labor = double.Parse(txtLabor.Text);
+
+            double labor;
+            try { labor = double.Parse(txtLabor.Text); }
+            catch { labor = 0; }
 
             double equip;
             try { equip = double.Parse(txtEquip.Text); }
@@ -35,7 +38,9 @@ namespace QDRIVE___WRT_Coordinator
             try {mon = double.Parse(txtMonitor.Text);}
             catch {mon = 0;}
 
-            double total = double.Parse(lblTotal.Text);
+            double total;
+            try { total = double.Parse(lblTotal.Text); }
+            catch { total = 0; }
 
             double afterHours;
             try {afterHours = double.Parse(txtAfterHours.Text);}
@@ -45,19 +50,22 @@ namespace QDRIVE___WRT_Coordinator
             try { hours = double.Parse(txtHours.Text); }
             catch { hours = 0; }
 
-            main.tbjobcommTableAdapter.Insert(labor, equip, mon, total, afterHours, hours, jobID);
-            main.tbjobcommTableAdapter.Fill(main.dbwrtcoordinatorDataSet.tbjobcomm);
+
 
             //update job status of record in tbjob
-            using (OleDbConnection conn = new OleDbConnection(connString))
+            if (manual == 0)
             {
-                conn.Open();
-                string update = "UPDATE tbjob SET job_status = @status, job_date_end = @end WHERE job_id = @id";
-                OleDbCommand cmdUpdate = new OleDbCommand(update, conn);
-                cmdUpdate.Parameters.AddWithValue("@status", OleDbType.VarChar).Value = "Complete: Pending Commission";
-                cmdUpdate.Parameters.AddWithValue("@end", OleDbType.Date).Value = Convert.ToDateTime(dtpEndDate.Value);
-                cmdUpdate.Parameters.AddWithValue("@id", OleDbType.Integer).Value = jobID;
-                cmdUpdate.ExecuteNonQuery();
+                Database.updateStatement("tbjob", "job_status", "job_date_end", "job_id", "Complete: Pending Commission",
+                    Convert.ToDateTime(dtpEndDate.Value), jobID);
+                main.tbjobcommTableAdapter.Insert(labor, equip, mon, total, afterHours, hours, jobID, manual);
+                main.tbjobcommTableAdapter.Fill(main.dbwrtcoordinatorDataSet.tbjobcomm);
+            }
+            else
+            {
+                Database.updateStatement("tbjob", "job_status", "job_date_end", "job_id", "Closed",
+                    Convert.ToDateTime(dtpEndDate.Text), jobID);
+                //update pay status for employees to 2. this would mean they are not getting commission calculated manually
+                Database.updateStatement("tbempjob", "empjob_pay_status", "job_id", 2, jobID);
             }
 
             main.tbjobTableAdapter.Fill(main.dbwrtcoordinatorDataSet.tbjob);
@@ -66,8 +74,29 @@ namespace QDRIVE___WRT_Coordinator
             Close();
         }
 
+        private void ckManual_CheckedChanged(object sender, EventArgs e)
+        {
+            IsCommCalc();
+        }
+
+        private void IsCommCalc()
+        {
+            if (ckManual.Checked)
+                manual = 0;
+            else
+            {
+                manual = 1;
+                txtLabor.Enabled = false;
+                txtEquip.Enabled = false;
+                txtMonitor.Enabled = false;
+                lblTotal.Enabled = false;
+                txtAfterHours.Enabled = false;
+                txtHours.Enabled = false;
+            }
+        }
+
         //method to update total label on text_changed event handlers for labor/equip/mon
-        private void totalUp()
+        public void totalUp()
         {
             double labor;
             double equip;
@@ -124,5 +153,7 @@ namespace QDRIVE___WRT_Coordinator
             txtLabor.Focus();
             dtpEndDate.Text = DateTime.Today.ToShortDateString();
         }
+
+
     }
 }

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.ckManual = new System.Windows.Forms.CheckBox();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblCustomer = new System.Windows.Forms.Label();
@@ -46,8 +49,6 @@
             this.txtLabor = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.ckManual);
             this.groupBox9.Controls.Add(this.dtpEndDate);
             this.groupBox9.Controls.Add(this.label2);
             this.groupBox9.Controls.Add(this.lblTotal);
@@ -78,16 +80,51 @@
             this.groupBox9.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(12, 12);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(267, 453);
+            this.groupBox9.Size = new System.Drawing.Size(267, 497);
             this.groupBox9.TabIndex = 9;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Sales Informtion";
+            // 
+            // ckManual
+            // 
+            this.ckManual.AutoSize = true;
+            this.ckManual.Checked = true;
+            this.ckManual.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckManual.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckManual.Location = new System.Drawing.Point(32, 107);
+            this.ckManual.Name = "ckManual";
+            this.ckManual.Size = new System.Drawing.Size(202, 20);
+            this.ckManual.TabIndex = 25;
+            this.ckManual.Text = "Commission will be calculated";
+            this.ckManual.UseVisualStyleBackColor = true;
+            this.ckManual.CheckedChanged += new System.EventHandler(this.ckManual_CheckedChanged);
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.CalendarFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEndDate.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEndDate.Location = new System.Drawing.Point(108, 147);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(104, 22);
+            this.dtpEndDate.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(4, 152);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 16);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Complete Date:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblTotal
             // 
             this.lblTotal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTotal.Location = new System.Drawing.Point(107, 261);
+            this.lblTotal.Location = new System.Drawing.Point(105, 304);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(103, 25);
             this.lblTotal.TabIndex = 22;
@@ -97,7 +134,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(65, 265);
+            this.label3.Location = new System.Drawing.Point(63, 308);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 16);
             this.label3.TabIndex = 21;
@@ -142,7 +179,7 @@
             // btnCloseJob
             // 
             this.btnCloseJob.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseJob.Location = new System.Drawing.Point(74, 390);
+            this.btnCloseJob.Location = new System.Drawing.Point(72, 433);
             this.btnCloseJob.Name = "btnCloseJob";
             this.btnCloseJob.Size = new System.Drawing.Size(123, 45);
             this.btnCloseJob.TabIndex = 7;
@@ -153,7 +190,7 @@
             // txtHours
             // 
             this.txtHours.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHours.Location = new System.Drawing.Point(110, 342);
+            this.txtHours.Location = new System.Drawing.Point(108, 385);
             this.txtHours.Name = "txtHours";
             this.txtHours.Size = new System.Drawing.Size(72, 22);
             this.txtHours.TabIndex = 17;
@@ -162,7 +199,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(58, 348);
+            this.label15.Location = new System.Drawing.Point(56, 391);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(46, 16);
             this.label15.TabIndex = 16;
@@ -172,7 +209,7 @@
             // txtAfterHours
             // 
             this.txtAfterHours.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAfterHours.Location = new System.Drawing.Point(110, 309);
+            this.txtAfterHours.Location = new System.Drawing.Point(108, 352);
             this.txtAfterHours.Name = "txtAfterHours";
             this.txtAfterHours.Size = new System.Drawing.Size(72, 22);
             this.txtAfterHours.TabIndex = 15;
@@ -181,7 +218,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(27, 315);
+            this.label16.Location = new System.Drawing.Point(25, 358);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(77, 16);
             this.label16.TabIndex = 14;
@@ -191,7 +228,7 @@
             // txtMonitor
             // 
             this.txtMonitor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonitor.Location = new System.Drawing.Point(110, 220);
+            this.txtMonitor.Location = new System.Drawing.Point(108, 263);
             this.txtMonitor.Name = "txtMonitor";
             this.txtMonitor.Size = new System.Drawing.Size(104, 22);
             this.txtMonitor.TabIndex = 13;
@@ -201,7 +238,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(32, 223);
+            this.label17.Location = new System.Drawing.Point(30, 266);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(72, 16);
             this.label17.TabIndex = 12;
@@ -211,7 +248,7 @@
             // txtEquip
             // 
             this.txtEquip.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEquip.Location = new System.Drawing.Point(110, 189);
+            this.txtEquip.Location = new System.Drawing.Point(108, 232);
             this.txtEquip.Name = "txtEquip";
             this.txtEquip.Size = new System.Drawing.Size(104, 22);
             this.txtEquip.TabIndex = 11;
@@ -221,7 +258,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(30, 192);
+            this.label18.Location = new System.Drawing.Point(28, 235);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(74, 16);
             this.label18.TabIndex = 10;
@@ -231,7 +268,7 @@
             // txtLabor
             // 
             this.txtLabor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLabor.Location = new System.Drawing.Point(110, 154);
+            this.txtLabor.Location = new System.Drawing.Point(108, 197);
             this.txtLabor.Name = "txtLabor";
             this.txtLabor.Size = new System.Drawing.Size(104, 22);
             this.txtLabor.TabIndex = 9;
@@ -241,7 +278,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(60, 157);
+            this.label19.Location = new System.Drawing.Point(58, 200);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(44, 16);
             this.label19.TabIndex = 8;
@@ -259,31 +296,11 @@
             this.label21.Text = "Customer:";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 109);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 16);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Complete Date:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.CalendarFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(110, 101);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(104, 26);
-            this.dtpEndDate.TabIndex = 24;
-            // 
             // frmCloseSite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 477);
+            this.ClientSize = new System.Drawing.Size(297, 521);
             this.Controls.Add(this.groupBox9);
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -318,5 +335,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox ckManual;
     }
 }

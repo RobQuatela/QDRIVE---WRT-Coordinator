@@ -3755,6 +3755,8 @@ namespace QDRIVE___WRT_Coordinator {
             
             private global::System.Data.DataColumn columnjob_id;
             
+            private global::System.Data.DataColumn columnjobcomm_manual_comm;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tbjobcommDataTable() {
@@ -3854,6 +3856,14 @@ namespace QDRIVE___WRT_Coordinator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jobcomm_manual_commColumn {
+                get {
+                    return this.columnjobcomm_manual_comm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3889,7 +3899,7 @@ namespace QDRIVE___WRT_Coordinator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tbjobcommRow AddtbjobcommRow(double jobcomm_labor, double jobcomm_equip, double jobcomm_mon, double jobcomm_total, double jobcomm_after_hours, double jobcomm_hours, tbjobRow parenttbjobRowByFK_tbjob_tbjobcomm) {
+            public tbjobcommRow AddtbjobcommRow(double jobcomm_labor, double jobcomm_equip, double jobcomm_mon, double jobcomm_total, double jobcomm_after_hours, double jobcomm_hours, tbjobRow parenttbjobRowByFK_tbjob_tbjobcomm, int jobcomm_manual_comm) {
                 tbjobcommRow rowtbjobcommRow = ((tbjobcommRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3899,7 +3909,8 @@ namespace QDRIVE___WRT_Coordinator {
                         jobcomm_total,
                         jobcomm_after_hours,
                         jobcomm_hours,
-                        null};
+                        null,
+                        jobcomm_manual_comm};
                 if ((parenttbjobRowByFK_tbjob_tbjobcomm != null)) {
                     columnValuesArray[7] = parenttbjobRowByFK_tbjob_tbjobcomm[0];
                 }
@@ -3940,6 +3951,7 @@ namespace QDRIVE___WRT_Coordinator {
                 this.columnjobcomm_after_hours = base.Columns["jobcomm_after_hours"];
                 this.columnjobcomm_hours = base.Columns["jobcomm_hours"];
                 this.columnjob_id = base.Columns["job_id"];
+                this.columnjobcomm_manual_comm = base.Columns["jobcomm_manual_comm"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3961,6 +3973,8 @@ namespace QDRIVE___WRT_Coordinator {
                 base.Columns.Add(this.columnjobcomm_hours);
                 this.columnjob_id = new global::System.Data.DataColumn("job_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnjob_id);
+                this.columnjobcomm_manual_comm = new global::System.Data.DataColumn("jobcomm_manual_comm", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjobcomm_manual_comm);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnjobcomm_id}, true));
                 this.columnjobcomm_id.AutoIncrement = true;
@@ -4478,6 +4492,8 @@ namespace QDRIVE___WRT_Coordinator {
             
             private global::System.Data.DataColumn columncust_zip;
             
+            private global::System.Data.DataColumn columnins_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtjobcustDataTable() {
@@ -4617,6 +4633,14 @@ namespace QDRIVE___WRT_Coordinator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ins_nameColumn {
+                get {
+                    return this.columnins_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4652,7 +4676,7 @@ namespace QDRIVE___WRT_Coordinator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtjobcustRow AdddtjobcustRow(string job_status, System.DateTime job_date_start, System.DateTime job_date_end, int cust_id, int ins_id, string cust_name, string cust_city, string job_claim_number, string cust_address, string cust_state, string cust_zip) {
+            public dtjobcustRow AdddtjobcustRow(string job_status, System.DateTime job_date_start, System.DateTime job_date_end, int cust_id, int ins_id, string cust_name, string cust_city, string job_claim_number, string cust_address, string cust_state, string cust_zip, string ins_name) {
                 dtjobcustRow rowdtjobcustRow = ((dtjobcustRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -4667,7 +4691,8 @@ namespace QDRIVE___WRT_Coordinator {
                         job_claim_number,
                         cust_address,
                         cust_state,
-                        cust_zip};
+                        cust_zip,
+                        ins_name};
                 rowdtjobcustRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtjobcustRow);
                 return rowdtjobcustRow;
@@ -4703,6 +4728,7 @@ namespace QDRIVE___WRT_Coordinator {
                 this.columncust_address = base.Columns["cust_address"];
                 this.columncust_state = base.Columns["cust_state"];
                 this.columncust_zip = base.Columns["cust_zip"];
+                this.columnins_name = base.Columns["ins_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4734,6 +4760,8 @@ namespace QDRIVE___WRT_Coordinator {
                 base.Columns.Add(this.columncust_state);
                 this.columncust_zip = new global::System.Data.DataColumn("cust_zip", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncust_zip);
+                this.columnins_name = new global::System.Data.DataColumn("ins_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnins_name);
                 this.columnjob_id.AutoIncrement = true;
                 this.columnjob_id.AutoIncrementSeed = -1;
                 this.columnjob_id.AutoIncrementStep = -1;
@@ -4747,6 +4775,7 @@ namespace QDRIVE___WRT_Coordinator {
                 this.columncust_address.MaxLength = 255;
                 this.columncust_state.MaxLength = 255;
                 this.columncust_zip.MaxLength = 255;
+                this.columnins_name.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5201,6 +5230,10 @@ namespace QDRIVE___WRT_Coordinator {
             
             private global::System.Data.DataColumn columnjobequip_date_pickup;
             
+            private global::System.Data.DataColumn columnjobequip_id;
+            
+            private global::System.Data.DataColumn columnequip_id;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtEquipNameJobDataTable() {
@@ -5292,6 +5325,22 @@ namespace QDRIVE___WRT_Coordinator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn jobequip_idColumn {
+                get {
+                    return this.columnjobequip_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn equip_idColumn {
+                get {
+                    return this.columnequip_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5336,7 +5385,9 @@ namespace QDRIVE___WRT_Coordinator {
                         equip_name,
                         co_id,
                         jobequip_date_assign,
-                        jobequip_date_pickup};
+                        jobequip_date_pickup,
+                        null,
+                        null};
                 rowdtEquipNameJobRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtEquipNameJobRow);
                 return rowdtEquipNameJobRow;
@@ -5366,6 +5417,8 @@ namespace QDRIVE___WRT_Coordinator {
                 this.columnco_id = base.Columns["co_id"];
                 this.columnjobequip_date_assign = base.Columns["jobequip_date_assign"];
                 this.columnjobequip_date_pickup = base.Columns["jobequip_date_pickup"];
+                this.columnjobequip_id = base.Columns["jobequip_id"];
+                this.columnequip_id = base.Columns["equip_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5385,7 +5438,17 @@ namespace QDRIVE___WRT_Coordinator {
                 base.Columns.Add(this.columnjobequip_date_assign);
                 this.columnjobequip_date_pickup = new global::System.Data.DataColumn("jobequip_date_pickup", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnjobequip_date_pickup);
+                this.columnjobequip_id = new global::System.Data.DataColumn("jobequip_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjobequip_id);
+                this.columnequip_id = new global::System.Data.DataColumn("equip_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnequip_id);
                 this.columnequip_name.MaxLength = 255;
+                this.columnjobequip_id.AutoIncrement = true;
+                this.columnjobequip_id.AutoIncrementSeed = -1;
+                this.columnjobequip_id.AutoIncrementStep = -1;
+                this.columnequip_id.AutoIncrement = true;
+                this.columnequip_id.AutoIncrementSeed = -1;
+                this.columnequip_id.AutoIncrementStep = -1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10559,6 +10622,22 @@ namespace QDRIVE___WRT_Coordinator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int jobcomm_manual_comm {
+                get {
+                    try {
+                        return ((int)(this[this.tabletbjobcomm.jobcomm_manual_commColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jobcomm_manual_comm\' in table \'tbjobcomm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletbjobcomm.jobcomm_manual_commColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tbjobRow tbjobRow {
                 get {
                     return ((tbjobRow)(this.GetParentRow(this.Table.ParentRelations["FK_tbjob_tbjobcomm"])));
@@ -10650,6 +10729,18 @@ namespace QDRIVE___WRT_Coordinator {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setjob_idNull() {
                 this[this.tabletbjobcomm.job_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isjobcomm_manual_commNull() {
+                return this.IsNull(this.tabletbjobcomm.jobcomm_manual_commColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setjobcomm_manual_commNull() {
+                this[this.tabletbjobcomm.jobcomm_manual_commColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11093,6 +11184,22 @@ namespace QDRIVE___WRT_Coordinator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ins_name {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtjobcust.ins_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ins_name\' in table \'dtjobcust\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtjobcust.ins_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isjob_idNull() {
                 return this.IsNull(this.tabledtjobcust.job_idColumn);
             }
@@ -11245,6 +11352,18 @@ namespace QDRIVE___WRT_Coordinator {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setcust_zipNull() {
                 this[this.tabledtjobcust.cust_zipColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isins_nameNull() {
+                return this.IsNull(this.tabledtjobcust.ins_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setins_nameNull() {
+                this[this.tabledtjobcust.ins_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11531,6 +11650,38 @@ namespace QDRIVE___WRT_Coordinator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int jobequip_id {
+                get {
+                    try {
+                        return ((int)(this[this.tabledtEquipNameJob.jobequip_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jobequip_id\' in table \'dtEquipNameJob\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEquipNameJob.jobequip_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int equip_id {
+                get {
+                    try {
+                        return ((int)(this[this.tabledtEquipNameJob.equip_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'equip_id\' in table \'dtEquipNameJob\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEquipNameJob.equip_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isjobequip_countNull() {
                 return this.IsNull(this.tabledtEquipNameJob.jobequip_countColumn);
             }
@@ -11611,6 +11762,30 @@ namespace QDRIVE___WRT_Coordinator {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setjobequip_date_pickupNull() {
                 this[this.tabledtEquipNameJob.jobequip_date_pickupColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isjobequip_idNull() {
+                return this.IsNull(this.tabledtEquipNameJob.jobequip_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setjobequip_idNull() {
+                this[this.tabledtEquipNameJob.jobequip_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isequip_idNull() {
+                return this.IsNull(this.tabledtEquipNameJob.equip_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setequip_idNull() {
+                this[this.tabledtEquipNameJob.equip_idColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -18284,10 +18459,11 @@ FROM            tbempcomm";
             tableMapping.ColumnMappings.Add("jobcomm_after_hours", "jobcomm_after_hours");
             tableMapping.ColumnMappings.Add("jobcomm_hours", "jobcomm_hours");
             tableMapping.ColumnMappings.Add("job_id", "job_id");
+            tableMapping.ColumnMappings.Add("jobcomm_manual_comm", "jobcomm_manual_comm");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `tbjobcomm` WHERE ((`jobcomm_id` = ?) AND ((? = 1 AND `jobcomm_labor` IS NULL) OR (`jobcomm_labor` = ?)) AND ((? = 1 AND `jobcomm_equip` IS NULL) OR (`jobcomm_equip` = ?)) AND ((? = 1 AND `jobcomm_mon` IS NULL) OR (`jobcomm_mon` = ?)) AND ((? = 1 AND `jobcomm_total` IS NULL) OR (`jobcomm_total` = ?)) AND ((? = 1 AND `jobcomm_after_hours` IS NULL) OR (`jobcomm_after_hours` = ?)) AND ((? = 1 AND `jobcomm_hours` IS NULL) OR (`jobcomm_hours` = ?)) AND ((? = 1 AND `job_id` IS NULL) OR (`job_id` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `tbjobcomm` WHERE ((`jobcomm_id` = ?) AND ((? = 1 AND `jobcomm_labor` IS NULL) OR (`jobcomm_labor` = ?)) AND ((? = 1 AND `jobcomm_equip` IS NULL) OR (`jobcomm_equip` = ?)) AND ((? = 1 AND `jobcomm_mon` IS NULL) OR (`jobcomm_mon` = ?)) AND ((? = 1 AND `jobcomm_total` IS NULL) OR (`jobcomm_total` = ?)) AND ((? = 1 AND `jobcomm_after_hours` IS NULL) OR (`jobcomm_after_hours` = ?)) AND ((? = 1 AND `jobcomm_hours` IS NULL) OR (`jobcomm_hours` = ?)) AND ((? = 1 AND `job_id` IS NULL) OR (`job_id` = ?)) AND ((? = 1 AND `jobcomm_manual_comm` IS NULL) OR (`jobcomm_manual_comm` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_jobcomm_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_id", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_jobcomm_labor", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_labor", global::System.Data.DataRowVersion.Original, true, null));
@@ -18304,11 +18480,13 @@ FROM            tbempcomm";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_jobcomm_hours", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_hours", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_job_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "job_id", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_job_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "job_id", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_jobcomm_manual_comm", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_manual_comm", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_jobcomm_manual_comm", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_manual_comm", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `tbjobcomm` (`jobcomm_labor`, `jobcomm_equip`, `jobcomm_mon`, `jobcom" +
-                "m_total`, `jobcomm_after_hours`, `jobcomm_hours`, `job_id`) VALUES (?, ?, ?, ?, " +
-                "?, ?, ?)";
+                "m_total`, `jobcomm_after_hours`, `jobcomm_hours`, `job_id`, `jobcomm_manual_comm" +
+                "`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_labor", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_labor", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_equip", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_equip", global::System.Data.DataRowVersion.Current, false, null));
@@ -18317,9 +18495,10 @@ FROM            tbempcomm";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_after_hours", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_after_hours", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_hours", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_hours", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("job_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "job_id", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_manual_comm", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_manual_comm", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `tbjobcomm` SET `jobcomm_labor` = ?, `jobcomm_equip` = ?, `jobcomm_mon` = ?, `jobcomm_total` = ?, `jobcomm_after_hours` = ?, `jobcomm_hours` = ?, `job_id` = ? WHERE ((`jobcomm_id` = ?) AND ((? = 1 AND `jobcomm_labor` IS NULL) OR (`jobcomm_labor` = ?)) AND ((? = 1 AND `jobcomm_equip` IS NULL) OR (`jobcomm_equip` = ?)) AND ((? = 1 AND `jobcomm_mon` IS NULL) OR (`jobcomm_mon` = ?)) AND ((? = 1 AND `jobcomm_total` IS NULL) OR (`jobcomm_total` = ?)) AND ((? = 1 AND `jobcomm_after_hours` IS NULL) OR (`jobcomm_after_hours` = ?)) AND ((? = 1 AND `jobcomm_hours` IS NULL) OR (`jobcomm_hours` = ?)) AND ((? = 1 AND `job_id` IS NULL) OR (`job_id` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `tbjobcomm` SET `jobcomm_labor` = ?, `jobcomm_equip` = ?, `jobcomm_mon` = ?, `jobcomm_total` = ?, `jobcomm_after_hours` = ?, `jobcomm_hours` = ?, `job_id` = ?, `jobcomm_manual_comm` = ? WHERE ((`jobcomm_id` = ?) AND ((? = 1 AND `jobcomm_labor` IS NULL) OR (`jobcomm_labor` = ?)) AND ((? = 1 AND `jobcomm_equip` IS NULL) OR (`jobcomm_equip` = ?)) AND ((? = 1 AND `jobcomm_mon` IS NULL) OR (`jobcomm_mon` = ?)) AND ((? = 1 AND `jobcomm_total` IS NULL) OR (`jobcomm_total` = ?)) AND ((? = 1 AND `jobcomm_after_hours` IS NULL) OR (`jobcomm_after_hours` = ?)) AND ((? = 1 AND `jobcomm_hours` IS NULL) OR (`jobcomm_hours` = ?)) AND ((? = 1 AND `job_id` IS NULL) OR (`job_id` = ?)) AND ((? = 1 AND `jobcomm_manual_comm` IS NULL) OR (`jobcomm_manual_comm` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_labor", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_labor", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_equip", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_equip", global::System.Data.DataRowVersion.Current, false, null));
@@ -18328,6 +18507,7 @@ FROM            tbempcomm";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_after_hours", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_after_hours", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_hours", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_hours", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("job_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "job_id", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("jobcomm_manual_comm", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_manual_comm", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_jobcomm_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_id", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_jobcomm_labor", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_labor", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_jobcomm_labor", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_labor", global::System.Data.DataRowVersion.Original, false, null));
@@ -18343,6 +18523,8 @@ FROM            tbempcomm";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_jobcomm_hours", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_hours", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_job_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "job_id", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_job_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "job_id", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_jobcomm_manual_comm", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_manual_comm", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_jobcomm_manual_comm", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "jobcomm_manual_comm", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18358,8 +18540,9 @@ FROM            tbempcomm";
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT jobcomm_id, jobcomm_labor, jobcomm_equip, jobcomm_mon, jobcomm_total, jobc" +
-                "omm_after_hours, jobcomm_hours, job_id FROM tbjobcomm";
+            this._commandCollection[0].CommandText = "SELECT        jobcomm_id, jobcomm_labor, jobcomm_equip, jobcomm_mon, jobcomm_tota" +
+                "l, jobcomm_after_hours, jobcomm_hours, job_id, jobcomm_manual_comm\r\nFROM        " +
+                "    tbjobcomm";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -18420,7 +18603,7 @@ FROM            tbempcomm";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_jobcomm_id, global::System.Nullable<double> Original_jobcomm_labor, global::System.Nullable<double> Original_jobcomm_equip, global::System.Nullable<double> Original_jobcomm_mon, global::System.Nullable<double> Original_jobcomm_total, global::System.Nullable<double> Original_jobcomm_after_hours, global::System.Nullable<double> Original_jobcomm_hours, global::System.Nullable<int> Original_job_id) {
+        public virtual int Delete(int Original_jobcomm_id, global::System.Nullable<double> Original_jobcomm_labor, global::System.Nullable<double> Original_jobcomm_equip, global::System.Nullable<double> Original_jobcomm_mon, global::System.Nullable<double> Original_jobcomm_total, global::System.Nullable<double> Original_jobcomm_after_hours, global::System.Nullable<double> Original_jobcomm_hours, global::System.Nullable<int> Original_job_id, global::System.Nullable<int> Original_jobcomm_manual_comm) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_jobcomm_id));
             if ((Original_jobcomm_labor.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -18478,6 +18661,14 @@ FROM            tbempcomm";
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
+            if ((Original_jobcomm_manual_comm.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((int)(Original_jobcomm_manual_comm.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -18498,7 +18689,7 @@ FROM            tbempcomm";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<double> jobcomm_labor, global::System.Nullable<double> jobcomm_equip, global::System.Nullable<double> jobcomm_mon, global::System.Nullable<double> jobcomm_total, global::System.Nullable<double> jobcomm_after_hours, global::System.Nullable<double> jobcomm_hours, global::System.Nullable<int> job_id) {
+        public virtual int Insert(global::System.Nullable<double> jobcomm_labor, global::System.Nullable<double> jobcomm_equip, global::System.Nullable<double> jobcomm_mon, global::System.Nullable<double> jobcomm_total, global::System.Nullable<double> jobcomm_after_hours, global::System.Nullable<double> jobcomm_hours, global::System.Nullable<int> job_id, global::System.Nullable<int> jobcomm_manual_comm) {
             if ((jobcomm_labor.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((double)(jobcomm_labor.Value));
             }
@@ -18541,6 +18732,12 @@ FROM            tbempcomm";
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            if ((jobcomm_manual_comm.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(jobcomm_manual_comm.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -18561,7 +18758,24 @@ FROM            tbempcomm";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<double> jobcomm_labor, global::System.Nullable<double> jobcomm_equip, global::System.Nullable<double> jobcomm_mon, global::System.Nullable<double> jobcomm_total, global::System.Nullable<double> jobcomm_after_hours, global::System.Nullable<double> jobcomm_hours, global::System.Nullable<int> job_id, int Original_jobcomm_id, global::System.Nullable<double> Original_jobcomm_labor, global::System.Nullable<double> Original_jobcomm_equip, global::System.Nullable<double> Original_jobcomm_mon, global::System.Nullable<double> Original_jobcomm_total, global::System.Nullable<double> Original_jobcomm_after_hours, global::System.Nullable<double> Original_jobcomm_hours, global::System.Nullable<int> Original_job_id) {
+        public virtual int Update(
+                    global::System.Nullable<double> jobcomm_labor, 
+                    global::System.Nullable<double> jobcomm_equip, 
+                    global::System.Nullable<double> jobcomm_mon, 
+                    global::System.Nullable<double> jobcomm_total, 
+                    global::System.Nullable<double> jobcomm_after_hours, 
+                    global::System.Nullable<double> jobcomm_hours, 
+                    global::System.Nullable<int> job_id, 
+                    global::System.Nullable<int> jobcomm_manual_comm, 
+                    int Original_jobcomm_id, 
+                    global::System.Nullable<double> Original_jobcomm_labor, 
+                    global::System.Nullable<double> Original_jobcomm_equip, 
+                    global::System.Nullable<double> Original_jobcomm_mon, 
+                    global::System.Nullable<double> Original_jobcomm_total, 
+                    global::System.Nullable<double> Original_jobcomm_after_hours, 
+                    global::System.Nullable<double> Original_jobcomm_hours, 
+                    global::System.Nullable<int> Original_job_id, 
+                    global::System.Nullable<int> Original_jobcomm_manual_comm) {
             if ((jobcomm_labor.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((double)(jobcomm_labor.Value));
             }
@@ -18604,62 +18818,76 @@ FROM            tbempcomm";
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_jobcomm_id));
-            if ((Original_jobcomm_labor.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(Original_jobcomm_labor.Value));
+            if ((jobcomm_manual_comm.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(jobcomm_manual_comm.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_jobcomm_id));
+            if ((Original_jobcomm_labor.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(Original_jobcomm_labor.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_jobcomm_equip.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(Original_jobcomm_equip.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(Original_jobcomm_equip.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_jobcomm_mon.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(Original_jobcomm_mon.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(Original_jobcomm_mon.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_jobcomm_total.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(Original_jobcomm_total.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(Original_jobcomm_total.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_jobcomm_after_hours.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((double)(Original_jobcomm_after_hours.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(Original_jobcomm_after_hours.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             if ((Original_jobcomm_hours.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((double)(Original_jobcomm_hours.Value));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(Original_jobcomm_hours.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             if ((Original_job_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_job_id.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_job_id.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((Original_jobcomm_manual_comm.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_jobcomm_manual_comm.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -19299,6 +19527,7 @@ FROM            tbempcomm";
             tableMapping.ColumnMappings.Add("cust_address", "cust_address");
             tableMapping.ColumnMappings.Add("cust_state", "cust_state");
             tableMapping.ColumnMappings.Add("cust_zip", "cust_zip");
+            tableMapping.ColumnMappings.Add("ins_name", "ins_name");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -19315,11 +19544,12 @@ FROM            tbempcomm";
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        tbjob.job_id, tbjob.job_status, tbjob.job_date_start, tbjob.job_date_end, tbjob.cust_id, tbjob.ins_id, tbcustomer.cust_name, tbcompany.co_id, tbcustomer.cust_city, tbjob.job_claim_number, 
-                         tbcustomer.cust_address, tbcustomer.cust_state, tbcustomer.cust_zip
-FROM            ((tbjob INNER JOIN
+            this._commandCollection[0].CommandText = @"SELECT        tbjob.job_id, tbjob.job_status, tbjob.job_date_start, tbjob.job_date_end, tbjob.cust_id, tbjob.ins_id, tbcustomer.cust_name, tbcompany.co_id, tbcustomer.cust_city, 
+                         tbjob.job_claim_number, tbcustomer.cust_address, tbcustomer.cust_state, tbcustomer.cust_zip, tbinsurance.ins_name
+FROM            (((tbjob INNER JOIN
                          tbcustomer ON tbjob.cust_id = tbcustomer.cust_id) INNER JOIN
-                         tbcompany ON tbcustomer.co_id = tbcompany.co_id)";
+                         tbcompany ON tbcustomer.co_id = tbcompany.co_id) INNER JOIN
+                         tbinsurance ON tbjob.ins_id = tbinsurance.ins_id)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -19685,6 +19915,8 @@ GROUP BY tbcustomer.cust_city";
             tableMapping.ColumnMappings.Add("co_id", "co_id");
             tableMapping.ColumnMappings.Add("jobequip_date_assign", "jobequip_date_assign");
             tableMapping.ColumnMappings.Add("jobequip_date_pickup", "jobequip_date_pickup");
+            tableMapping.ColumnMappings.Add("jobequip_id", "jobequip_id");
+            tableMapping.ColumnMappings.Add("equip_id", "equip_id");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -19701,7 +19933,8 @@ GROUP BY tbcustomer.cust_city";
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        tbjobequip.jobequip_count, tbjobequip.jobequip_status, tbjobequip.job_id, tbequipment.equip_name, tbequipment.co_id, tbjobequip.jobequip_date_assign, tbjobequip.jobequip_date_pickup
+            this._commandCollection[0].CommandText = @"SELECT        tbjobequip.jobequip_count, tbjobequip.jobequip_status, tbjobequip.job_id, tbequipment.equip_name, tbequipment.co_id, tbjobequip.jobequip_date_assign, tbjobequip.jobequip_date_pickup, 
+                         tbjobequip.jobequip_id, tbequipment.equip_id
 FROM            (tbequipment INNER JOIN
                          tbjobequip ON tbequipment.equip_id = tbjobequip.equip_id)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

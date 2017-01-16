@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using Microsoft.Reporting.WinForms;
 
 namespace QDRIVE___WRT_Coordinator
 {
@@ -83,8 +84,8 @@ namespace QDRIVE___WRT_Coordinator
             // TODO: This line of code loads data into the 'dbwrtcoordinatorDataSet.tbemployee' table. You can move, or remove it, as needed.
             this.tbemployeeTableAdapter.Fill(this.dbwrtcoordinatorDataSet.tbemployee);
             this.tbempcommTableAdapter.Fill(this.dbwrtcoordinatorDataSet.tbempcomm);
-            
-            
+
+
             // TODO: This line of code loads data into the 'dbwrtcoordinatorDataSet.tbcompany' table. You can move, or remove it, as needed.
             this.tbcompanyTableAdapter.Fill(this.dbwrtcoordinatorDataSet.tbcompany);
 
@@ -117,6 +118,7 @@ namespace QDRIVE___WRT_Coordinator
             tbemployeeBindingSource.Sort = "emp_name ASC";
             bsReportEmpCommSumm.Sort = "emp_name ASC";
             bsCommDetailEmp.Sort = "emp_name ASC";
+            dtjobcustBindingSource.Sort = "job_date_start ASC";
 
 
             //filter the reports
@@ -141,7 +143,7 @@ namespace QDRIVE___WRT_Coordinator
             reports.Add(rvEquipmentInventory);
             reports.Add(rvCommDetail);
             reports.Add(rvCommSummary);
-            for(int i = 0; i < reports.Count; i++)
+            for (int i = 0; i < reports.Count; i++)
             {
                 reports[i].SetPageSettings(printPreview(pg));
                 reports[i].SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
@@ -170,22 +172,15 @@ namespace QDRIVE___WRT_Coordinator
             string insurance;
 
             //set report parameters
-            Microsoft.Reporting.WinForms.ReportParameter paramFrom = new Microsoft.Reporting.WinForms.ReportParameter("dateFrom", from.ToString());
-            Microsoft.Reporting.WinForms.ReportParameter paramTo = new Microsoft.Reporting.WinForms.ReportParameter("dateTo", to.ToString());      
+            ReportParameter paramFrom = new ReportParameter("dateFrom", from.ToString());
+            ReportParameter paramTo = new ReportParameter("dateTo", to.ToString());
 
             //what to do if filter by insurance is checked
             if (ckFilterbyIns.Checked)
             {
                 lstCommIns.Visible = true;
                 dtReportCommSummBindingSource.Filter = "emp_id = " + Convert.ToInt32(lstCommSummEmp.SelectedValue) + " AND ins_id = " + Convert.ToInt32(lstCommIns.SelectedValue) + " AND job_date_end >= '" + from + "' AND job_date_end <= '" + to + "'";
-                using (OleDbConnection conn = new OleDbConnection(connString))
-                {
-                    string select = "SELECT ins_name FROM tbinsurance WHERE ins_id = @id";
-                    OleDbCommand cmdSelect = new OleDbCommand(select, conn);
-                    conn.Open();
-                    cmdSelect.Parameters.AddWithValue("@id", OleDbType.Integer).Value = lstCommIns.SelectedValue;
-                    insurance = cmdSelect.ExecuteScalar().ToString();
-                }
+                insurance = Database.SelectStatementString("ins_name", "tbinsurance", "ins_id", Convert.ToInt32(lstCommIns.SelectedValue));
             }
             else
             {
@@ -209,19 +204,10 @@ namespace QDRIVE___WRT_Coordinator
             bsReportCommDetail.Filter = "jobcomm_id = " + Convert.ToInt32(lstCommDetailJobs.SelectedValue) + "";
 
             //query to find the empcomm_id to filter the report empcomm dataset binding source to
-            int empcomm_id;
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                conn.Open();
-                string sqlSelect = "SELECT empcomm_id FROM tbempcomm WHERE emp_id = @emp AND jobcomm_id = @jobcomm";
-                OleDbCommand cmdSelect = new OleDbCommand(sqlSelect, conn);
-                cmdSelect.Parameters.AddWithValue("@emp", OleDbType.Integer).Value = Convert.ToInt32(lstCommDetailEmp.SelectedValue) + "";
-                cmdSelect.Parameters.AddWithValue("@jobcomm", OleDbType.Integer).Value = Convert.ToInt32(lstCommDetailJobs.SelectedValue) + "";
-                empcomm_id = Convert.ToInt32(cmdSelect.ExecuteScalar());
-            }
-
+            int empcomm_id = Database.SelectStatementInt("empcomm_id", "tbempcomm", "emp_id", "jobcomm_id", Convert.ToInt32(lstCommDetailEmp.SelectedValue),
+                Convert.ToInt32(lstCommDetailJobs.SelectedValue));
             bsCommDetailReportEmp.Filter = "empcomm_id = " + empcomm_id + "";
-            
+
             rvCommDetail.RefreshReport();
         }
 
@@ -249,55 +235,20 @@ namespace QDRIVE___WRT_Coordinator
             double wage;
             double h;
 
-            
-            try
-            {
-                l = double.Parse(labor);
-            }
-            catch
-            {
-                l = 0;
-            }
-            try
-            {
-                lp = double.Parse(laborPer);
-            }
-            catch
-            {
-                lp = 0;
-            }
-            try
-            {
-                e = double.Parse(equip);
-            }
-            catch
-            {
-                e = 0;
-            }
-            try
-            {
-                ep = double.Parse(equipPer);
-            }
-            catch
-            {
-                ep = 0;
-            }
-            try
-            {
-                m = double.Parse(mon);
-            }
-            catch
-            {
-                m = 0;
-            }
-            try
-            {
-                mp = double.Parse(monPer);
-            }
-            catch
-            {
-                mp = 0;
-            }
+
+            try { l = double.Parse(labor); }
+            catch { l = 0; }
+            try { lp = double.Parse(laborPer); }
+            catch { lp = 0; }
+            try { e = double.Parse(equip); }
+            catch { e = 0; }
+            try { ep = double.Parse(equipPer); }
+            catch { ep = 0; }
+            try { m = double.Parse(mon); }
+            catch { m = 0; }
+            try { mp = double.Parse(monPer); }
+            catch { mp = 0; }
+
             try
             {
                 if (double.Parse(comPer) >= 1)
@@ -305,26 +256,13 @@ namespace QDRIVE___WRT_Coordinator
                 else
                     cp = double.Parse(comPer);
             }
-            catch
-            {
-                cp = 0;
-            }
-            try
-            {
-                wage = double.Parse(hourlyWage);
-            }
-            catch
-            {
-                wage = 0;
-            }
-            try
-            {
-                h = double.Parse(hours);
-            }
-            catch
-            {
-                h = 0;
-            }
+            catch { cp = 0; }
+
+            try { wage = double.Parse(hourlyWage); }
+            catch { wage = 0; }
+            try { h = double.Parse(hours); }
+            catch { h = 0; }
+
             double totalPay = ((l * lp) + (e * ep) + (m * mp)) * cp;
             double initPay = wage * h * -1;
             double netPay = totalPay + initPay;
@@ -380,22 +318,13 @@ namespace QDRIVE___WRT_Coordinator
         {
             try
             {
-                lbljobIDASSIGNED.Visible = true;
                 dtEquipNameJobTableAdapter.Fill(dbwrtcoordinatorDataSet.dtEquipNameJob);
-                Binding jobId = new Binding("Text", dtjobcustBindingSourceASSIGNED, "job_id");
-                lbljobIDASSIGNED.DataBindings.Clear();
-                lbljobIDASSIGNED.DataBindings.Add(jobId);
-                int id = Convert.ToInt32(lbljobIDASSIGNED.Text);
+                int id = Convert.ToInt32(dgvAssignedJobSites.Rows[dgvAssignedJobSites.CurrentCell.RowIndex].Cells[0].Value);
                 dtEquipNameJobBindingSource.Filter = "job_id = " + id + "";
-                //dgvJobLocation.DataSource = dtjobcustTableAdapter.CityJobSites();
             }
             catch
             {
 
-            }
-            finally
-            {
-                lbljobIDASSIGNED.Visible = false;
             }
         }
 
@@ -428,53 +357,22 @@ namespace QDRIVE___WRT_Coordinator
             dtempnamejobBindingSourceCOMM.Filter = "job_id = " + jobId + " AND empjob_pay_status = 0";
             lblCOMMJobID.Visible = false;
         }
-        
+
         private void filterLaborEquipMon()
         {
-            using (OleDbConnection conn = new OleDbConnection(connString))
+            try
             {
-                //currency variables
-                double commLabor;
-                double commEquip;
-                double commMon;
+                int jobId = int.Parse(lblCOMMJobID.Text);
+                lblCommLabor.Text = Database.SelectStatementDub("jobcomm_labor", "tbjobcomm", "job_id", jobId).ToString();
+                lblCommEquip.Text = Database.SelectStatementDub("jobcomm_equip", "tbjobcomm", "job_id", Convert.ToInt32(lblCOMMJobID.Text)).ToString();
+                lblCommMonitor.Text = Database.SelectStatementDub("jobcomm_mon", "tbjobcomm", "job_id", Convert.ToInt32(lblCOMMJobID.Text)).ToString();
+                jobCommID = Database.SelectStatementInt("jobcomm_id", "tbjobcomm", "job_id", Convert.ToInt32(lblCOMMJobID.Text));
+                lblCommComm.Text = Database.SelectStatementDub("emp_per", "tbemployee", "emp_id", Convert.ToInt32(lstAssignedEmployees.SelectedValue)).ToString();
+                lblHours.Text = Database.SelectStatementDub("jobcomm_hours", "tbjobcomm", "job_id", Convert.ToInt32(lblCOMMJobID.Text)).ToString();
+            }
+            catch
+            {
 
-                
-                conn.Open();
-                string labor = "SELECT jobcomm_labor FROM tbjobcomm WHERE job_id = @id";
-                string equip = "SELECT jobcomm_equip FROM tbjobcomm WHERE job_id = @id";
-                string mon = "SELECT jobcomm_mon FROM tbjobcomm WHERE job_id = @id";
-                string commJobId = "SELECT jobcomm_id FROM tbjobcomm WHERE job_id = @id";
-                string commPer = "SELECT emp_per FROM tbemployee WHERE emp_id = @emp";
-                string jobHours = "SELECT jobcomm_hours FROM tbjobcomm WHERE job_id = @id";
-                OleDbCommand cmdLabor = new OleDbCommand(labor, conn);
-                OleDbCommand cmdEquip = new OleDbCommand(equip, conn);
-                OleDbCommand cmdMon = new OleDbCommand(mon, conn);
-                OleDbCommand cmdCommID = new OleDbCommand(commJobId, conn);
-                OleDbCommand cmdCommPer = new OleDbCommand(commPer, conn);
-                OleDbCommand cmdjobHours = new OleDbCommand(jobHours, conn);
-                try
-                {
-                    cmdLabor.Parameters.AddWithValue("@id", OleDbType.Integer).Value = int.Parse(lblCOMMJobID.Text);
-                    cmdEquip.Parameters.AddWithValue("@id", OleDbType.Integer).Value = int.Parse(lblCOMMJobID.Text);
-                    cmdMon.Parameters.AddWithValue("@id", OleDbType.Integer).Value = int.Parse(lblCOMMJobID.Text);
-                    cmdCommID.Parameters.AddWithValue("@id", OleDbType.Integer).Value = int.Parse(lblCOMMJobID.Text);
-                    cmdCommPer.Parameters.AddWithValue("@emp", OleDbType.Integer).Value = Convert.ToInt32(lstAssignedEmployees.SelectedValue);
-                    cmdjobHours.Parameters.AddWithValue("@id", OleDbType.Integer).Value = int.Parse(lblCOMMJobID.Text);
-                    commLabor = Convert.ToDouble(cmdLabor.ExecuteScalar());
-                    commEquip = Convert.ToDouble(cmdEquip.ExecuteScalar());
-                    commMon = Convert.ToDouble(cmdMon.ExecuteScalar());
-                    jobCommID = Convert.ToInt32(cmdCommID.ExecuteScalar());
-                    lblCommComm.Text = Convert.ToString(cmdCommPer.ExecuteScalar());
-                    lblHours.Text = Convert.ToString(cmdjobHours.ExecuteScalar());
-
-                    lblCommLabor.Text = commLabor.ToString();
-                    lblCommEquip.Text = commEquip.ToString();
-                    lblCommMonitor.Text = commMon.ToString();
-                }
-                catch
-                {
-
-                }
             }
         }
 
@@ -505,41 +403,41 @@ namespace QDRIVE___WRT_Coordinator
             //dgvJobLocation.Enabled = true;
             //dtCityJobsTableAdapter.Fill(dbwrtcoordinatorDataSet.dtCityJobs);
             lblCity.Visible = true;
-                if (ckFilterByDate.Checked)
-                {
-                    dtpLocationDate.Enabled = true;
-                    dtCityJobsBindingSource.Filter = "jobequip_date_pickup = '" + Convert.ToDateTime(dtpLocationDate.Text) + "' AND co_id = " + Convert.ToInt32(lstCompanies.SelectedValue) + "";
-                }
-                else if (ckFilterByDate.Checked == false)
-                {
-                    dtCityJobsBindingSource.Filter = "co_id = " + Convert.ToInt32(lstCompanies.SelectedValue) + "";
-                }
-                dtCustByCityTableAdapter.Fill(dbwrtcoordinatorDataSet.dtCustByCity);
-                dtCustByCityBindingSource.Filter = "cust_city = '" + lblCity.Text + "'";
+            if (ckFilterByDate.Checked)
+            {
+                dtpLocationDate.Enabled = true;
+                dtCityJobsBindingSource.Filter = "jobequip_date_pickup = '" + Convert.ToDateTime(dtpLocationDate.Text) + "' AND co_id = " + Convert.ToInt32(lstCompanies.SelectedValue) + "";
+            }
+            else if (ckFilterByDate.Checked == false)
+            {
+                dtCityJobsBindingSource.Filter = "co_id = " + Convert.ToInt32(lstCompanies.SelectedValue) + "";
+            }
+            dtCustByCityTableAdapter.Fill(dbwrtcoordinatorDataSet.dtCustByCity);
+            dtCustByCityBindingSource.Filter = "cust_city = '" + lblCity.Text + "'";
             filterEquipPickupReport();
             lblCity.Visible = false;
             //}
-           /* else
-            {
-                dgvJobLocation.Enabled = false;
-                dtCustByCityTableAdapter.Fill(dbwrtcoordinatorDataSet.dtCustByCity);
-                if(ckFilterByDate.Checked)
-                {
-                    dtpLocationDate.Enabled = true;
-                    dtCustByCityBindingSource.Filter = "jobequip_date_pickup = '" + Convert.ToDateTime(dtpLocationDate.Text) + "' AND co_id = " + Convert.ToInt32(lstCompanies.SelectedValue) + "";
-                }
-                else if (ckFilterByDate.Checked == false)
-                {
-                    dtCustByCityBindingSource.Filter = "co_id = " + Convert.ToInt32(lstCompanies.SelectedValue) + "";
-                }
-            } */
+            /* else
+             {
+                 dgvJobLocation.Enabled = false;
+                 dtCustByCityTableAdapter.Fill(dbwrtcoordinatorDataSet.dtCustByCity);
+                 if(ckFilterByDate.Checked)
+                 {
+                     dtpLocationDate.Enabled = true;
+                     dtCustByCityBindingSource.Filter = "jobequip_date_pickup = '" + Convert.ToDateTime(dtpLocationDate.Text) + "' AND co_id = " + Convert.ToInt32(lstCompanies.SelectedValue) + "";
+                 }
+                 else if (ckFilterByDate.Checked == false)
+                 {
+                     dtCustByCityBindingSource.Filter = "co_id = " + Convert.ToInt32(lstCompanies.SelectedValue) + "";
+                 }
+             } */
         }
 
         //method to filter jobs by customer in customer center
         public void filterJobsByCustomer()
         {
-            dtCustomerJobCenterTableAdapter.Fill(dbwrtcoordinatorDataSet.dtCustomerJobCenter);
-            dtCustomerJobCenterBindingSource.Filter = "cust_id = " + Convert.ToInt32(lstCustomers.SelectedValue) + "";
+            dtjobcustTableAdapter.Fill(dbwrtcoordinatorDataSet.dtjobcust);
+            bsdtJobCustCustomerCenter.Filter = "cust_id = " + Convert.ToInt32(lstCustomers.SelectedValue) + "";
         }
 
         //method to filter employee information in employee center
@@ -556,7 +454,7 @@ namespace QDRIVE___WRT_Coordinator
         //method to manage tab pages that are visisble/non-visible
         private bool tabManager(TabPage tab, bool open, ToolStripMenuItem menuItem)
         {
-            if(open)
+            if (open)
             {
                 tcMain.TabPages.Remove(tab);
                 open = false;
@@ -628,32 +526,11 @@ namespace QDRIVE___WRT_Coordinator
         }
 
         //database functions
-        
+
         private void saveEmployees(int id, string name, double percent)
         {
-            string sqlSave = "UPDATE tbemployee SET emp_name = @name, emp_per = @per WHERE emp_id = @id";
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                conn.Open();
-                OleDbCommand cmdSave = new OleDbCommand(sqlSave, conn);
-                cmdSave.Parameters.AddWithValue("@name", OleDbType.VarChar).Value = name;
-                cmdSave.Parameters.AddWithValue("@per", OleDbType.Double).Value = percent;
-                cmdSave.Parameters.AddWithValue("@id", OleDbType.Integer).Value = id;
-                cmdSave.ExecuteNonQuery();
-                
-            }
-
+            Database.updateStatement("tbemployee", "emp_name", "emp_per", "emp_id", name, percent, id);
             tbemployeeTableAdapter.Fill(dbwrtcoordinatorDataSet.tbemployee);
-        }
-
-        //generic method to show selected dgv rows in textboxes
-        private void selectRowDataGridView(DataGridView dgv, List<TextBox> txt)
-        {
-            int i = dgv.CurrentRow.Index;
-            for(int j = 0; j < txt.Count; j++)
-            {
-                txt[j].Text = Convert.ToString(dgv[j+1, i].Value);
-            }
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
@@ -689,17 +566,7 @@ namespace QDRIVE___WRT_Coordinator
         //update insurance name
         private void btnEditInsurance_Click(object sender, EventArgs e)
         {
-            string sqlEdit = "UPDATE tbinsurance SET ins_name = @name WHERE ins_id = @id";
-
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                conn.Open();
-                OleDbCommand cmdEdit = new OleDbCommand(sqlEdit, conn);
-                cmdEdit.Parameters.AddWithValue("@name", OleDbType.VarChar).Value = txtEditInsurance.Text;
-                cmdEdit.Parameters.AddWithValue("@id", OleDbType.Integer).Value = lstInsurance.SelectedValue;
-                cmdEdit.ExecuteNonQuery();
-            }
-
+            Database.updateStatement("tbinsurance", "ins_name", "ins_id", txtEditInsurance.Text, Convert.ToInt32(lstInsurance.SelectedValue));
             tbinsuranceTableAdapter.Fill(dbwrtcoordinatorDataSet.tbinsurance);
         }
 
@@ -733,10 +600,12 @@ namespace QDRIVE___WRT_Coordinator
             lblJobID.Visible = false;
 
             edit.coID = Convert.ToInt32(lstCompanies.SelectedValue);
+            edit.lblJobStatus.Text = cbJobSiteStatus.Text;
+            edit.ins_name = Database.SelectStatementString("ins_name", "tbinsurance", "tbjob", "tbinsurance.ins_id",
+                "tbjob.ins_id", "tbjob.job_id", edit.jobID);
+            edit.txtClaimNumber.Text = Database.SelectStatementString("job_claim_number", "tbjob", "job_id", edit.jobID);
 
-            edit.cbJobSiteStatus.Text = cbJobSiteStatus.Text;
-
-            if(String.IsNullOrEmpty(lblJobSiteDateComplete.Text))
+            if (String.IsNullOrEmpty(lblJobSiteDateComplete.Text))
             {
                 edit.dtpJobEnd.Visible = false;
                 edit.ckJobSiteEnd.Visible = true;
@@ -746,8 +615,47 @@ namespace QDRIVE___WRT_Coordinator
                 edit.ckJobSiteEnd.Visible = false;
                 edit.dtpJobEnd.Text = lblJobSiteDateComplete.Text;
             }
+
             edit.dtpJobStart.Text = lblJobSiteDateStart.Text;
+
+            //job totals if any
+            List<int> jobsInJobComm = Database.SelectStatementList("job_id", "tbjobcomm", "job_id", edit.jobID);
+            //change this for non-closed 
+            if (lblJobSiteStatus.Text == "Complete: Pending Commission")
+            {
+                edit.txtLabor.Text = Database.SelectStatementDub("jobcomm_labor", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtEquip.Text = Database.SelectStatementDub("jobcomm_equip", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtMonitor.Text = Database.SelectStatementDub("jobcomm_mon", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.lblTotal.Text = Database.SelectStatementDub("jobcomm_total", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtHours.Text = Database.SelectStatementDub("jobcomm_hours", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtAfterHours.Text = Database.SelectStatementDub("jobcomm_after_hours", "tbjobcomm", "job_id", edit.jobID).ToString();
+            }
+            else if (lblJobSiteStatus.Text == "Closed" && jobsInJobComm.Count > 0)
+            {
+                edit.txtLabor.Text = Database.SelectStatementDub("jobcomm_labor", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtEquip.Text = Database.SelectStatementDub("jobcomm_equip", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtMonitor.Text = Database.SelectStatementDub("jobcomm_mon", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.lblTotal.Text = Database.SelectStatementDub("jobcomm_total", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtHours.Text = Database.SelectStatementDub("jobcomm_hours", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtAfterHours.Text = Database.SelectStatementDub("jobcomm_after_hours", "tbjobcomm", "job_id", edit.jobID).ToString();
+
+                edit.txtLabor.ReadOnly = true;
+                edit.txtEquip.ReadOnly = true;
+                edit.txtMonitor.ReadOnly = true;
+                edit.txtHours.ReadOnly = true;
+                edit.txtAfterHours.ReadOnly = true;
+            }
+            else
+            {
+                edit.txtLabor.Enabled = false;
+                edit.txtEquip.Enabled = false;
+                edit.txtMonitor.Enabled = false;
+                edit.txtHours.Enabled = false;
+                edit.txtAfterHours.Enabled = false;
+            }
+
             edit.Show();
+            this.Enabled = false;
         }
 
         private void btnAddCust_Click(object sender, EventArgs e)
@@ -759,7 +667,7 @@ namespace QDRIVE___WRT_Coordinator
             this.dbwrtcoordinatorDataSet.tbcustomer.Clear();
             this.tbcustomerTableAdapter.Fill(this.dbwrtcoordinatorDataSet.tbcustomer);
             this.dtCustomerClaimTableAdapter.Fill(this.dbwrtcoordinatorDataSet.dtCustomerClaim);
-            
+
             filterJobsByCustomer();
 
             txtCustNewName.Clear();
@@ -769,7 +677,7 @@ namespace QDRIVE___WRT_Coordinator
             txtCustNewZip.Clear();
 
             //messagebox to add job site as soon as user adds customer to tbcustomer
-            if(MessageBox.Show("Do you want to create a job site for this customer?", "QDRIVE - WRT Coordinator", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Do you want to create a job site for this customer?", "QDRIVE - WRT Coordinator", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 frmJobSiteWizard jobSiteWizard = new frmJobSiteWizard();
                 jobSiteWizard.tbcustomerTableAdapter.Fill(dbwrtcoordinatorDataSet.tbcustomer);
@@ -787,25 +695,22 @@ namespace QDRIVE___WRT_Coordinator
                 jobSiteWizard.lblCustomer.Text = custName;
                 jobSiteWizard.Show();
             }
-            
+
         }
-        
+
         private void btnCompleteWork_Click(object sender, EventArgs e)
         {
-            using (OleDbConnection conn = new OleDbConnection(connString))
+            if (MessageBox.Show("Are you sure this job is complete?", "QDRIVE - WRT Coordinator", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 lblJobID.Visible = true;
-                conn.Open();
-                string update = "UPDATE tbjob SET job_status = @status WHERE job_id = @id";
-                OleDbCommand cmdUpdate = new OleDbCommand(update, conn);
-                cmdUpdate.Parameters.AddWithValue("@status", OleDbType.VarChar).Value = "Complete: Pending Total";
-                cmdUpdate.Parameters.AddWithValue("@id", OleDbType.Integer).Value = Convert.ToInt32(lblJobID.Text);
-                cmdUpdate.ExecuteNonQuery();
+                int jobId = Convert.ToInt32(lblJobID.Text);
                 lblJobID.Visible = false;
-            }
 
-            tbjobTableAdapter.Fill(dbwrtcoordinatorDataSet.tbjob);
-            dtjobcustTableAdapter.Fill(dbwrtcoordinatorDataSet.dtjobcust);
+                Database.updateStatement("tbjob", "job_status", "job_id", "Complete: Pending Total", jobId);
+
+                tbjobTableAdapter.Fill(dbwrtcoordinatorDataSet.tbjob);
+                dtjobcustTableAdapter.Fill(dbwrtcoordinatorDataSet.dtjobcust);
+            }
         }
 
         private void btnCloseSite_Click(object sender, EventArgs e)
@@ -893,18 +798,10 @@ namespace QDRIVE___WRT_Coordinator
                 tbempcommTableAdapter.Fill(dbwrtcoordinatorDataSet.tbempcomm);
 
                 //update record from empjob
-                using (OleDbConnection conn = new OleDbConnection(connString))
-                {
-                    lblCOMMJobID.Visible = true;
-                    conn.Open();
-                    string update = "UPDATE tbempjob SET empjob_pay_status = @status WHERE emp_id = @emp AND job_id = @job";
-                    OleDbCommand cmdUpdate = new OleDbCommand(update, conn);
-                    cmdUpdate.Parameters.AddWithValue("@status", OleDbType.Integer).Value = 1;
-                    cmdUpdate.Parameters.AddWithValue("@emp", OleDbType.Integer).Value = Convert.ToInt32(lstAssignedEmployees.SelectedValue);
-                    cmdUpdate.Parameters.AddWithValue("@job", OleDbType.Integer).Value = Convert.ToInt32(lblCOMMJobID.Text);
-                    cmdUpdate.ExecuteNonQuery();
-                    lblCOMMJobID.Visible = false;
-                }
+                lblCOMMJobID.Visible = true;
+                Database.updateStatementDualWhere("tbempjob", "empjob_pay_status", "emp_id", "job_id", 1, Convert.ToInt32(lstAssignedEmployees.SelectedValue),
+                    Convert.ToInt32(lblCOMMJobID.Text));
+                lblCOMMJobID.Visible = false;
 
                 tbempjobTableAdapter.Fill(dbwrtcoordinatorDataSet.tbempjob);
                 dtempnamejobTableAdapter.Fill(dbwrtcoordinatorDataSet.dtempnamejob);
@@ -934,19 +831,31 @@ namespace QDRIVE___WRT_Coordinator
         {
             try
             {
-                using (OleDbConnection conn = new OleDbConnection(connString))
+                lbljobCommID.Visible = true;
+                List<int> employeesPaid = new List<int>();
+                bool paid = true;
+
+                employeesPaid = Database.SelectStatementList("empjob_pay_status", "tbempjob", "job_id", Convert.ToInt32(lbljobCommID.Text));
+
+                foreach (int i in employeesPaid)
                 {
-                    conn.Open();
-                    lbljobCommID.Visible = true;
-                    string update = "UPDATE tbjob SET job_status = 'Closed' WHERE job_id = @id";
-                    OleDbCommand cmdUpdate = new OleDbCommand(update, conn);
-                    cmdUpdate.Parameters.AddWithValue("@id", OleDbType.Integer).Value = Convert.ToInt32(lbljobCommID.Text);
-                    cmdUpdate.ExecuteNonQuery();
-                    lbljobCommID.Visible = false;
+                    if (i == 0)
+                    {
+                        paid = false;
+                        break;
+                    }
                 }
 
-                tbjobTableAdapter.Fill(dbwrtcoordinatorDataSet.tbjob);
-                dtjobcustTableAdapter.Fill(dbwrtcoordinatorDataSet.dtjobcust);
+                if (paid)
+                {
+                    Database.updateStatement("tbjob", "job_status", "job_id", "Closed", Convert.ToInt32(lbljobCommID.Text));
+                    tbjobTableAdapter.Fill(dbwrtcoordinatorDataSet.tbjob);
+                    dtjobcustTableAdapter.Fill(dbwrtcoordinatorDataSet.dtjobcust);
+                }
+                else
+                    MessageBox.Show("Cannot close this job out. Assigned Employees have not yet been paid.", "QDRIVE - WRT Coordinator", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                lbljobCommID.Visible = false;
             }
             catch
             {
@@ -958,13 +867,11 @@ namespace QDRIVE___WRT_Coordinator
         {
             frmAssignEquip assignEquip = new frmAssignEquip();
             assignEquip.tbequipmentBindingSource.Filter = "co_id = " + Convert.ToInt32(lstCompanies.SelectedValue);
-            
+            int rowIndex = dgvScopedJobSites.CurrentCell.RowIndex;
+            assignEquip.jobId = Convert.ToInt32(dgvScopedJobSites.Rows[rowIndex].Cells[0].Value);
 
-            lblScopedCustID.Visible = true;
-            lblScopedJobID.Visible = true;
-            assignEquip.lblJobID.Text = lblScopedJobID.Text;
-            assignEquip.lblCustName.Text = lblScopedCustID.Text;
-            lblScopedCustID.Visible = false;
+            //assignEquip.lblJobID.Text = a;
+            assignEquip.lblCustName.Text = dgvScopedJobSites.Rows[rowIndex].Cells[6].Value.ToString();
 
             assignEquip.Show();
             this.Enabled = false;
@@ -1005,89 +912,43 @@ namespace QDRIVE___WRT_Coordinator
 
         private void btnPickupEquip_Click(object sender, EventArgs e)
         {
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                conn.Open();
+            //get count of tbjobequip equipment types in job and store in array
+            List<int> lstEquipIds = new List<int>();
+            lstEquipIds = Database.SelectStatementList("equip_id", "tbjobequip", "job_id", Convert.ToInt32(lstJobSiteByLocation.SelectedValue));
 
-                //get count of tbjobequip equipment types in job and store in array
-                string sqlGetTypes = "SELECT equip_id FROM tbjobequip WHERE job_id = @id";
-                OleDbCommand cmdGetTypes = new OleDbCommand(sqlGetTypes, conn);
-                cmdGetTypes.Parameters.AddWithValue("@id", OleDbType.Integer).Value = Convert.ToInt32(lstJobSiteByLocation.SelectedValue);
-                OleDbDataReader reader = cmdGetTypes.ExecuteReader();
-                List<int> lstEquipIds = new List<int>();
+            //get count of tbjobequip equipment in job and store in array
+            List<int> lstEquipCount = new List<int>();
+            lstEquipCount = Database.SelectStatementList("jobequip_count", "tbjobequip", "job_id", Convert.ToInt32(lstJobSiteByLocation.SelectedValue));
 
-                while (reader.Read())
-                    lstEquipIds.Add(reader.GetInt32(0));
+            //get current stockin count of equip id and store it in a list
+            List<int> lstCurrentInCount = new List<int>();
+            for (int i = 0; i < lstEquipIds.Count; i++)
+                lstCurrentInCount.Add(Database.SelectStatementInt("equip_stock_in", "tbequipment", "equip_id", lstEquipIds[i]));
 
-                //get count of tbjobequip equipment in job and store in array
-                string sqlGetCount = "SELECT jobequip_count FROM tbjobequip WHERE job_id = @id";
-                OleDbCommand cmdGetCount = new OleDbCommand(sqlGetCount, conn);
-                cmdGetCount.Parameters.AddWithValue("@id", OleDbType.Integer).Value = Convert.ToInt32(lstJobSiteByLocation.SelectedValue);
-                OleDbDataReader countReader = cmdGetCount.ExecuteReader();
-                List<int> lstEquipCount = new List<int>();
+            //get current stockout count of equip id and store it in a list
+            List<int> lstCurrentOutCount = new List<int>();
+            for (int i = 0; i < lstEquipIds.Count; i++)
+                lstCurrentOutCount.Add(Database.SelectStatementInt("equip_stock_out", "tbequipment", "equip_id", lstEquipIds[i]));
 
-                while (countReader.Read())
-                    lstEquipCount.Add(countReader.GetInt32(0));
+            //add count and stock together in new equipment list
+            List<int> lstNewInCount = new List<int>();
+            for (int i = 0; i < lstCurrentInCount.Count; i++)
+                lstNewInCount.Add(lstCurrentInCount[i] + lstEquipCount[i]);
 
-                //get current stockin count of equip id and store it in a list
-                string sqlCurrentInCount = "SELECT equip_stock_in FROM tbequipment WHERE equip_id = @id";
-                OleDbCommand[] cmdCurrentInCount = new OleDbCommand[lstEquipIds.Count];
-                List<int> lstCurrentInCount = new List<int>();
-                for (int i = 0; i < cmdCurrentInCount.Length; i++)
-                {
-                    cmdCurrentInCount[i] = new OleDbCommand(sqlCurrentInCount, conn);
-                    cmdCurrentInCount[i].Parameters.AddWithValue("@id", OleDbType.Integer).Value = lstEquipIds[i];
-                    lstCurrentInCount.Add(Convert.ToInt32(cmdCurrentInCount[i].ExecuteScalar()));
-                }
+            //subtract count and stockout in new equipment list
+            List<int> lstNewOutCount = new List<int>();
+            for (int i = 0; i < lstCurrentOutCount.Count; i++)
+                lstNewOutCount.Add(lstCurrentOutCount[i] - lstEquipCount[i]);
 
-                //get current stockout count of equip id and store it in a list
-                string sqlCurrentOutCount = "SELECT equip_stock_out FROM tbequipment WHERE equip_id = @id";
-                OleDbCommand[] cmdCurrentOutCount = new OleDbCommand[lstEquipIds.Count];
-                List<int> lstCurrentOutCount = new List<int>();
-                for(int i = 0; i < cmdCurrentOutCount.Length; i++)
-                {
-                    cmdCurrentOutCount[i] = new OleDbCommand(sqlCurrentOutCount, conn);
-                    cmdCurrentOutCount[i].Parameters.AddWithValue("@id", OleDbType.Integer).Value = lstEquipIds[i];
-                    lstCurrentOutCount.Add(Convert.ToInt32(cmdCurrentOutCount[i].ExecuteScalar()));
-                }
-                
+            //update equipment table with new stockin/stockout count using the new count list
+            for (int i = 0; i < lstNewInCount.Count; i++)
+                Database.updateStatement("tbequipment", "equip_stock_in", "equip_stock_out", "equip_id", lstNewInCount[i], lstNewOutCount[i], lstEquipIds[i]);
 
-                //add count and stock together in new equipment list
-                List<int> lstNewInCount = new List<int>();
-                for(int i = 0; i < lstCurrentInCount.Count; i++)
-                    lstNewInCount.Add(lstCurrentInCount[i] + lstEquipCount[i]);
+            //update equipment status of tbjobequip
+            Database.updateStatement("tbjobequip", "jobequip_status", "job_id", 1, Convert.ToInt32(lstJobSiteByLocation.SelectedValue));
 
-                //subtract count and stockout in new equipment list
-                List<int> lstNewOutCount = new List<int>();
-                for (int i = 0; i < lstCurrentOutCount.Count; i++)
-                    lstNewOutCount.Add(lstCurrentOutCount[i] - lstEquipCount[i]);
-
-                //update equipment table with new stockin/stockout count using the new count list
-                string sqlUpdateCount = "UPDATE tbequipment SET equip_stock_in = @in, equip_stock_out = @out WHERE equip_id = @id";
-                OleDbCommand[] cmdUpdateCount = new OleDbCommand[lstNewInCount.Count];
-                for(int i = 0; i < cmdUpdateCount.Length; i++)
-                {
-                    cmdUpdateCount[i] = new OleDbCommand(sqlUpdateCount, conn);
-                    cmdUpdateCount[i].Parameters.AddWithValue("@in", OleDbType.Integer).Value = lstNewInCount[i];
-                    cmdUpdateCount[i].Parameters.AddWithValue("@out", OleDbType.Integer).Value = lstNewOutCount[i];
-                    cmdUpdateCount[i].Parameters.AddWithValue("@id", OleDbType.Integer).Value = lstEquipIds[i];
-                    cmdUpdateCount[i].ExecuteNonQuery();
-                }
-
-                //update equipment status of tbjobequip
-                string updateEquip = "UPDATE tbjobequip SET jobequip_status = 1 WHERE job_id = @id";
-                OleDbCommand cmdEquip = new OleDbCommand(updateEquip, conn);
-                cmdEquip.Parameters.AddWithValue("@id", OleDbType.Integer).Value = Convert.ToInt32(lstJobSiteByLocation.SelectedValue);
-                cmdEquip.ExecuteNonQuery();
-                
-                //update job status
-                string updateJob = "UPDATE tbjob SET job_status = 'Equipment Picked Up' WHERE job_id = @id";
-                OleDbCommand cmdJob = new OleDbCommand(updateJob, conn);
-                cmdJob.Parameters.AddWithValue("@id", OleDbType.Integer).Value = Convert.ToInt32(lstJobSiteByLocation.SelectedValue);
-                cmdJob.ExecuteNonQuery();
-
-
-            }
+            //update job status
+            Database.updateStatement("tbjob", "job_status", "job_id", "Equipment Picked Up", Convert.ToInt32(lstJobSiteByLocation.SelectedValue));
 
             tbequipmentTableAdapter.Fill(dbwrtcoordinatorDataSet.tbequipment);
             tbjobTableAdapter.Fill(dbwrtcoordinatorDataSet.tbjob);
@@ -1100,19 +961,8 @@ namespace QDRIVE___WRT_Coordinator
 
         private void btnSaveCustom_Click(object sender, EventArgs e)
         {
-            using (OleDbConnection conn = new OleDbConnection(connString))
-            {
-                conn.Open();
-                string update = "UPDATE tbcustomer SET cust_name = @name, cust_address = @address, cust_city = @city, cust_state = @state, cust_zip = @zip WHERE cust_id = @id";
-                OleDbCommand cmdUpdate = new OleDbCommand(update, conn);
-                cmdUpdate.Parameters.AddWithValue("@name", OleDbType.VarChar).Value = txtCustEditName.Text;
-                cmdUpdate.Parameters.AddWithValue("@address", OleDbType.VarChar).Value = txtCustEditAddress.Text;
-                cmdUpdate.Parameters.AddWithValue("@city", OleDbType.VarChar).Value = txtCustEditCity.Text;
-                cmdUpdate.Parameters.AddWithValue("@state", OleDbType.VarChar).Value = txtCustEditState.Text;
-                cmdUpdate.Parameters.AddWithValue("@zip", OleDbType.VarChar).Value = txtCustEditZip.Text;
-                cmdUpdate.Parameters.AddWithValue("@id", OleDbType.Integer).Value = Convert.ToInt32(lstCustomers.SelectedValue);
-                cmdUpdate.ExecuteNonQuery();
-            }
+            Database.updateStatement("tbcustomer", "cust_name", "cust_address", "cust_city", "cust_state", "cust_zip", "cust_id", txtCustEditName.Text, txtCustEditAddress.Text,
+                txtCustEditCity.Text, txtCustEditState.Text, txtCustEditZip.Text, Convert.ToInt32(lstCustomers.SelectedValue));
 
             tbcustomerTableAdapter.Fill(dbwrtcoordinatorDataSet.tbcustomer);
             fillFilterCityJob();
@@ -1227,6 +1077,97 @@ namespace QDRIVE___WRT_Coordinator
         private void lstCommIns_SelectedValueChanged(object sender, EventArgs e)
         {
             filterEmpCommSummaryReport();
+        }
+
+        private void btnEquipManager_Click(object sender, EventArgs e)
+        {
+            frmChangeEquip equip = new QDRIVE___WRT_Coordinator.frmChangeEquip();
+            equip.coID = Convert.ToInt32(lstCompanies.SelectedValue);
+            string filter = String.Format("co_id = {0}", equip.coID);
+            equip.tbequipmentBindingSource.Filter = filter;
+            equip.Show();
+        }
+
+        private void lklblEditJob_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmEditJobSite edit = new frmEditJobSite();
+            edit.lblJobSiteCustomer.Text = txtCustEditName.Text;
+            int rowIndex = dgvJobs.CurrentCell.RowIndex;
+            int colIndex = dgvJobs.CurrentCell.ColumnIndex;
+
+            lblJobID.Visible = true;
+            edit.jobID = Convert.ToInt32(dgvJobs.Rows[rowIndex].Cells[6].Value);
+            lblJobID.Visible = false;
+
+            edit.coID = Convert.ToInt32(lstCompanies.SelectedValue);
+            edit.lblJobStatus.Text = jobstatusDataGridViewTextBoxColumn4.ToString();
+            edit.ins_name = Database.SelectStatementString("ins_name", "tbinsurance", "tbjob", "tbinsurance.ins_id",
+                "tbjob.ins_id", "tbjob.job_id", edit.jobID);
+            edit.txtClaimNumber.Text = Database.SelectStatementString("job_claim_number", "tbjob", "job_id", edit.jobID);
+
+            if (String.IsNullOrEmpty(jobdateendDataGridViewTextBoxColumn4.ToString()))
+            {
+                edit.dtpJobEnd.Visible = false;
+                edit.ckJobSiteEnd.Visible = true;
+            }
+            else
+            {
+                edit.ckJobSiteEnd.Visible = false;
+                edit.dtpJobEnd.Text = lblJobSiteDateComplete.Text;
+            }
+
+            edit.dtpJobStart.Text = lblJobSiteDateStart.Text;
+
+            //job totals if any
+            List<int> jobsInJobComm = Database.SelectStatementList("job_id", "tbjobcomm", "job_id", edit.jobID);
+            //change this for non-closed 
+            if (lblJobSiteStatus.Text == "Complete: Pending Commission")
+            {
+                edit.txtLabor.Text = Database.SelectStatementDub("jobcomm_labor", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtEquip.Text = Database.SelectStatementDub("jobcomm_equip", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtMonitor.Text = Database.SelectStatementDub("jobcomm_mon", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.lblTotal.Text = Database.SelectStatementDub("jobcomm_total", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtHours.Text = Database.SelectStatementDub("jobcomm_hours", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtAfterHours.Text = Database.SelectStatementDub("jobcomm_after_hours", "tbjobcomm", "job_id", edit.jobID).ToString();
+            }
+            else if (lblJobSiteStatus.Text == "Closed" && jobsInJobComm.Count > 0)
+            {
+                edit.txtLabor.Text = Database.SelectStatementDub("jobcomm_labor", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtEquip.Text = Database.SelectStatementDub("jobcomm_equip", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtMonitor.Text = Database.SelectStatementDub("jobcomm_mon", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.lblTotal.Text = Database.SelectStatementDub("jobcomm_total", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtHours.Text = Database.SelectStatementDub("jobcomm_hours", "tbjobcomm", "job_id", edit.jobID).ToString();
+                edit.txtAfterHours.Text = Database.SelectStatementDub("jobcomm_after_hours", "tbjobcomm", "job_id", edit.jobID).ToString();
+
+                edit.txtLabor.ReadOnly = true;
+                edit.txtEquip.ReadOnly = true;
+                edit.txtMonitor.ReadOnly = true;
+                edit.txtHours.ReadOnly = true;
+                edit.txtAfterHours.ReadOnly = true;
+            }
+            else
+            {
+                edit.txtLabor.Enabled = false;
+                edit.txtEquip.Enabled = false;
+                edit.txtMonitor.Enabled = false;
+                edit.txtHours.Enabled = false;
+                edit.txtAfterHours.Enabled = false;
+            }
+
+            edit.Show();
+            this.Enabled = false;
+        }
+
+        private void lblEditAssignedEquip_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmEditAssignedEquip assignEquip = new frmEditAssignedEquip();
+            assignEquip.tbequipmentBindingSource.Filter = "co_id = " + Convert.ToInt32(lstCompanies.SelectedValue);
+            int rowIndex = dgvAssignedJobSites.CurrentCell.RowIndex;
+            assignEquip.jobId = Convert.ToInt32(dgvAssignedJobSites.Rows[rowIndex].Cells[0].Value);
+            assignEquip.lblCustName.Text = dgvAssignedJobSites.Rows[rowIndex].Cells[6].Value.ToString();
+
+            assignEquip.Show();
+            this.Enabled = false;
         }
     }
 }
